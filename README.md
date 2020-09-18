@@ -8,3 +8,5 @@ Micah Cook reviewing Philip's branch changes to the README.md file
 Vinayak Sharma
 
 Matthew Eccles
+
+I added this through git-ui
