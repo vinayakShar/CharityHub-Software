@@ -1,10 +1,9 @@
-This is the README file for our team's GitHub Repo.
-
 Micah Cook
 
 Jacob Line
 
 Philip Knott
+Micah Cook reviewing Philip's branch changes to the README.md file
 
 Vinayak Sharma
 
