@@ -12,6 +12,8 @@ Vinayak Sharma
 
 Matthew Eccles
 
+Joseph Nam
+
 I added this through git-ui
 
 Micah was here (reviewed Jacob's pull request)
