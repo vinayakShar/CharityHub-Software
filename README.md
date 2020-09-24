@@ -10,7 +10,7 @@ Micah Cook reviewing Philip's branch changes to the README.md file
 
 Vinayak Sharma
 
-Matthew Eccles
+Matthew Eccles (reviewed commit)
 
 Joseph Nam
 
