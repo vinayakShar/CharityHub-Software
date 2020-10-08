@@ -11,3 +11,8 @@ body {
 .form-signin .form-item {
     margin-bottom: 15px;
 }
+
+.navbar-brand {
+    font-family: Verdana;
+    font-weight: bolder;
+}
