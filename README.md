@@ -1,19 +1,10 @@
-Project Team Members:
+![Logo](./Website/img/logo.png)
 
-Micah Cook
+# Project Team Members
 
-Jacob Line
-
-Philip Knott
-
-Micah Cook reviewing Philip's branch changes to the README.md file
-
-Vinayak Sharma
-
-Matthew Eccles (reviewed commit)
-
-Joseph Nam
-
-I added this through git-ui
-
-Micah was here (reviewed Jacob's pull request)
+- Philip Knott
+- Vinayak Sharma
+- Joseph Nam
+- Micah Cook
+- Jacob Line
+- Matthew Eccles

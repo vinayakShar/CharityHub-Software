@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add a Charity</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	 <div style="background-image: url('./img/head_bg01.jpg'); background-size: cover;">
+		<p style="text-align:center;">
+			<a href="./home.html">
+				<br><img src="./img/logo_border.png" alt="CharityHub Logo">
+			</a>
+		</p>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="./home.html">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./about.html">About</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="./register.html">Register</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./login.html">Login</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div class="container">
+		<br><h1>Add a Charity</h1><br>
+		<form>
+			<div class="form-row">
+				<div class="col">
+					<div class="form-group">
+						<label for="charity_name">Charity Name</label>
+						<input type="text" class="form-control" id="charity_name" placeholder="Name of the organization" required>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label for="charity_type">Charity Type</label>
+						<input type="text" class="form-control" id="charity_type" placeholder="Choose one or more charity types..." required>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="charity_desc">Charity Description</label>
+				<textarea class="form-control" id="charity_desc" rows="5" placeholder="A brief description of the charity"></textarea>
+			</div>
+			<div class="form-row">
+				<div class="col">
+					<div class="form-group">
+						<label for="charity_url">Website</label>
+						<input type="url" class="form-control" id="charity_url" placeholder="https://www...">
+					</div>
+					<div class="form-group">
+						<label for="charity_contact">Contact Info</label>
+						<textarea class="form-control" id="charity_contact" rows="3" placeholder="Official business address"></textarea>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label for="charity_logo">Charity Logo</label>
+						<input type="file" accept="image/*" class="form-control" id="charity_logo">
+					</div>
+					<div class="form-group">
+						<label for="charity_photos">Profile Photos</label>
+						<input type="file" accept="image/*" class="form-control" id="charity_photos">
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-dark" style="float: right;">Submit</button>
+		</form>
+	</div>
+</body>
+</html>
