@@ -1,3 +1,10 @@
-# Frontend
+![Logo](./Website/img/logo.png)
 
-This branch contains frontend views and styles for CharityHub's user-interface. Mostly focused on functionality and necessary components (styling with come later). 
+# Project Team Members
+
+- Philip Knott
+- Vinayak Sharma
+- Joseph Nam
+- Micah Cook
+- Jacob Line
+- Matthew Eccles
