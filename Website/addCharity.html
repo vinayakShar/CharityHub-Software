@@ -3,6 +3,10 @@
 <head>
 	<title>Add a Charity</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="./scripts/editCharity.js"></script>
+	<!--
+	<link rel="stylesheet" href="./styles/styles.css">
+	-->
 </head>
 <body>
 	 <div style="background-image: url('./img/head_bg01.jpg'); background-size: cover;">
@@ -51,6 +55,10 @@
 				<label for="charity_desc">Charity Description</label>
 				<textarea class="form-control" id="charity_desc" rows="5" placeholder="A brief description of the charity"></textarea>
 			</div>
+			<div class="form-group">
+				<label for="charity_photo_text">Charity Summary</label>
+				<input type="text" class="form-control" id="charity_photo_text" rows="3" placeholder="A one-sentence motto or summary of the charity">
+			</div>
 			<div class="form-row">
 				<div class="col">
 					<div class="form-group">
@@ -68,13 +76,14 @@
 						<input type="file" accept="image/*" class="form-control" id="charity_logo">
 					</div>
 					<div class="form-group">
-						<label for="charity_photos">Profile Photos</label>
-						<input type="file" accept="image/*" class="form-control" id="charity_photos">
+						<label for="charity_photos">Profile Photo</label>
+						<input type="file" accept="image/*" class="form-control" id="charity_photo">
 					</div>
 				</div>
 			</div>
 			<a type="submit" class="btn btn-dark" href="./home.html" style="float: right;">Submit</a>
 		</form>
 	</div>
+	<br><br>
 </body>
 </html>

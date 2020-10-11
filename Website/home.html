@@ -3,7 +3,10 @@
 <head>
 	<title>CharityHub</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="./charityHub.js"></script>
+	<script src="./scripts/editCharity.js"></script>
+	<!--
+	<link rel="stylesheet" href="./styles/styles.css">
+	-->
 </head>
 <body onload="getHome()">
 	 <div style="background-image: url('./img/head_bg00.jpg'); background-size: cover;">
@@ -36,101 +39,131 @@
 		<div class="form-row border border-dark bg-dark text-white rounded" style="background-image: url('./img/head_bg00b.jpg'); background-size: cover;">
 			<div class="col"></div>
 			<div class="col-6">
-				<br><input type="text" class="form-control" id="search_input" placeholder="Search for a charity by name, keyword, location, type..."><br>
+				<br><input type="text" class="form-control border border-dark" id="search_input" placeholder="Search for a charity by name, keyword, location, type..."><br>
 			</div>
 			<div class="col"></div>
 		</div>
 	</div>
 	<div class="container">
 		<br><a type="button" class="btn btn-dark btn-lg" href="./addCharity.html" style="float: right;">Add a Charity</a>
-		<br><h3 id="row1">[Row 1]</h3>
-		<div class="card-deck">
-			<div class="card border-dark bg-light" style="width: 18rem;">
-				<h5 class="card-header text-center" id="item_title1">[Charity 1]</h5>
-				<a href="#" id="item_url1">
-					<img class="card-img-top" id="item_photo1" src="data:," alt="[Similar Charity]">
-				</a>
-				<div class="container text-center">
-					<p class="card-text" id="item_desc1">[Text]</p>
-					<div class="container border border-light">
-						<a type="button" class="btn btn-dark btn-sm" href="#">Animals</a>
-						<a type="button" class="btn btn-dark btn-sm" href="#">Adoption</a>
-						<a type="button" class="btn btn-dark btn-sm" href="#">Local</a>
+
+		<br><h3 id="row1"></h3>
+		<div class="container">
+			<div class="card-deck text-center">
+				<div class="card border-dark bg-light" style="width: 18rem;">
+					<h5 class="card-header" id="item_title0"></h5>
+					<a href="#" id="item_url0">
+						<img class="card-img-top" id="item_photo0" src="data:,">
+					</a>
+					<div class="container">
+						<p class="card-text" id="item_desc0"></p>
+						<div class="container border border-light" id="item_types0">
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="card border-dark bg-light" style="width: 18rem;">
-				<h5 class="card-header text-center" id="item_title2">[Charity 2]</h5>
-				<a href="#" id="item_url2">
-					<img class="card-img-top" id="item_photo2" src="data:," alt="[Similar Charity]">
-				</a>
-				<div class="container text-center">
-					<p class="card-text" id="item_desc2">[Text]</p>
-					<div class="container border border-light">
-						<a type="button" class="btn btn-dark btn-sm" href="#">Homeless</a>
-						<a type="button" class="btn btn-dark btn-sm" href="#">Local</a>
+				<div class="card border-dark bg-light" style="width: 18rem;">
+					<h5 class="card-header" id="item_title1"></h5>
+					<a href="#" id="item_url1">
+						<img class="card-img-top" id="item_photo1" src="data:,">
+					</a>
+					<div class="container">
+						<p class="card-text" id="item_desc1"></p>
+						<div class="container border border-light" id="item_types1">
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="card border-dark bg-light" style="width: 18rem;">
-				<h5 class="card-header text-center" id="item_title3">[Charity 3]</h5>
-				<a href="#" id="item_url3">
-					<img class="card-img-top" id="item_photo3" src="data:," alt="[Similar Charity]">
-				</a>
-				<div class="container text-center">
-					<p class="card-text" id="item_desc3">[Text]</p>
-					<div class="container border border-light">
-						<a type="button" class="btn btn-dark btn-sm" href="#">Disaster Relief</a>
-						<a type="button" class="btn btn-dark btn-sm" href="#">Global</a>
-						<a type="button" class="btn btn-dark btn-sm" href="#">Volunteering</a>
+				<div class="card border-dark bg-light" style="width: 18rem;">
+					<h5 class="card-header" id="item_title2"></h5>
+					<a href="#" id="item_url2">
+						<img class="card-img-top" id="item_photo2" src="data:,">
+					</a>
+					<div class="container">
+						<p class="card-text" id="item_desc2"></p>
+						<div class="container border border-light" id="item_types2">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<br><h3 id="row2">[Row 2]</h3>
-		<div class="card-deck">
-			<div class="card border-dark bg-light" style="width: 18rem;">
-				<h5 class="card-header text-center" id="item_title4">[Charity 4]</h5>
-				<a href="#" id="item_url4">
-					<img class="card-img-top" id="item_photo4" src="data:," alt="[Similar Charity]">
-				</a>
-				<div class="container text-center">
-					<p class="card-text" id="item_desc4">[Text]</p>
-					<div class="container border border-light">
-						<a type="button" class="btn btn-dark btn-sm" href="#">Support</a>
-						<a type="button" class="btn btn-dark btn-sm" href="#">Global</a>
-						<a type="button" class="btn btn-dark btn-sm" href="#">Volunteering</a>
+
+		<br><h3 id="row2"></h3>
+		<div class="container">
+			<div class="card-deck text-center">
+				<div class="card border-dark bg-light" style="width: 18rem;">
+					<h5 class="card-header" id="item_title3"></h5>
+					<a href="#" id="item_url3">
+						<img class="card-img-top" id="item_photo3" src="data:,">
+					</a>
+					<div class="container">
+						<p class="card-text" id="item_desc3"></p>
+						<div class="container border border-light" id="item_types3">
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="card border-dark bg-light" style="width: 18rem;">
-				<h5 class="card-header text-center" id="item_title5">[Charity 5]</h5>
-				<a href="#" id="item_url5">
-					<img class="card-img-top" id="item_photo5" src="data:," alt="[Similar Charity]">
-				</a>
-				<div class="container text-center">
-					<p class="card-text" id="item_desc5">[Text]</p>
-					<div class="container border border-light">
-						<a type="button" class="btn btn-dark btn-sm" href="#">Hunger</a>
-						<a type="button" class="btn btn-dark btn-sm" href="#">Global</a>
+				<div class="card border-dark bg-light" style="width: 18rem;">
+					<h5 class="card-header" id="item_title4"></h5>
+					<a href="#" id="item_url4">
+						<img class="card-img-top" id="item_photo4" src="data:,">
+					</a>
+					<div class="container">
+						<p class="card-text" id="item_desc4"></p>
+						<div class="container border border-light" id="item_types4">
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="card border-dark bg-light" style="width: 18rem;">
-				<h5 class="card-header text-center" id="item_title6">[Charity 6]</h5>
-				<a href="#" id="item_url6">
-					<img class="card-img-top" id="item_photo6" src="data:," alt="[Similar Charity]">
-				</a>
-				<div class="container text-center">
-					<p class="card-text" id="item_desc6">[Text]</p>
-					<div class="container border border-light">
-						<a type="button" class="btn btn-dark btn-sm" href="#">Hunger</a>
-						<a type="button" class="btn btn-dark btn-sm" href="#">Local</a>
-						<a type="button" class="btn btn-dark btn-sm" href="#">Volunteering</a>
+				<div class="card border-dark bg-light" style="width: 18rem;">
+					<h5 class="card-header" id="item_title5"></h5>
+					<a href="#" id="item_url5">
+						<img class="card-img-top" id="item_photo5" src="data:,">
+					</a>
+					<div class="container">
+						<p class="card-text" id="item_desc5"></p>
+						<div class="container border border-light" id="item_types5">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<br><h3 id="row3"></h3>
+		<div class="container">
+			<div class="card-deck text-center">
+				<div class="card border-dark bg-light" style="width: 18rem;">
+					<h5 class="card-header" id="item_title6"></h5>
+					<a href="#" id="item_url6">
+						<img class="card-img-top" id="item_photo6" src="data:,">
+					</a>
+					<div class="container">
+						<p class="card-text" id="item_desc6"></p>
+						<div class="container border border-light" id="item_types6">
+						</div>
+					</div>
+				</div>
+				<div class="card border-dark bg-light" style="width: 18rem;">
+					<h5 class="card-header" id="item_title7"></h5>
+					<a href="#" id="item_url7">
+						<img class="card-img-top" id="item_photo7" src="data:,">
+					</a>
+					<div class="container">
+						<p class="card-text" id="item_desc7"></p>
+						<div class="container border border-light" id="item_types7">
+						</div>
+					</div>
+				</div>
+				<div class="card border-dark bg-light" style="width: 18rem;">
+					<h5 class="card-header" id="item_title8"></h5>
+					<a href="#" id="item_url8">
+						<img class="card-img-top" id="item_photo8" src="data:,">
+					</a>
+					<div class="container">
+						<p class="card-text" id="item_desc8"></p>
+						<div class="container border border-light" id="item_types8">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<br>
 		<div class="row">
 			<div class="col">
