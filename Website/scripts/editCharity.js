@@ -4,12 +4,12 @@ var charity = [
 				logo:"./img/logo.png",
 				description:"",
 				type1:"Support",
-				type2:"Local",
-				type3:"Volunteering",
+				type2:"",
+				type3:"",
 				url:"./home.html",
-				url_fb:"#",
-				url_tw:"#",
-				url_in:"#",
+				url_fb:"",
+				url_tw:"",
+				url_in:"",
 				contact:"1111 Engineering Drive<br>Boulder, CO 80309-0428",
 				desc:"",
 				event1:"Milestone 3",
@@ -176,6 +176,15 @@ var charity = [
 				];
 
 function viewCharity(num){
+	loadCharity(num);
+	// Populate charity recommendations
+	cardRow(0,"similar");
+	cardCharity(0,1);
+	cardCharity(1,2);
+	cardCharity(2,3);
+}
+
+function loadCharity(num){
 	// Title & Logo
 	document.getElementById("charity_title").innerHTML = charity[num].name + " - CharityHub Profile";
 	document.getElementById("charity_brand").innerHTML = charity[num].name;
@@ -238,11 +247,6 @@ function viewCharity(num){
 	}
 	else
 		document.getElementById("projectCarousel").style.display = "none";
-
-	// Populate charity recommendations
-	cardCharity(1,1);
-	cardCharity(2,2);
-	cardCharity(3,3);
 }
 
 function editCharity(num){
@@ -359,7 +363,20 @@ function saveCharity(num){
 	document.getElementById("projectCarousel").style.display = "";
 
 	// Re-populate page
-	viewCharity(num);
+	loadCharity(num);
+}
+
+function cardRow(icard,location){
+	var box = document.getElementById(location);
+	for ( let i = 0 ; i<3 ; i++ ) {
+		box.innerHTML = box.innerHTML
+			+ "<div class='card border-dark bg-light' style='width: 18rem;'><h5 class='card-header' id='item_title"
+			+ (icard+i) + "'></h5><a href='#' id='item_url"
+			+ (icard+i) + "'><img class='card-img-top' id='item_photo"
+			+ (icard+i) + "' src='data:,'></a><div class='container'><p class='card-text' id='item_desc"
+			+ (icard+i) + "'></p><div class='container border border-light' id='item_types"
+			+ (icard+i) + "'></div></div></div>";
+	}
 }
 
 function cardCharity(card,num){
@@ -377,15 +394,18 @@ function cardCharity(card,num){
 }
 
 function getHome(){
-	document.getElementById("row1").innerHTML = "Featured";
+	document.getElementById("title1").innerHTML = "Featured";
+	cardRow(0,"row1");
 	cardCharity(0,0);
 	cardCharity(1,1);
 	cardCharity(2,2);
-	document.getElementById("row2").innerHTML = "Trending";
+	document.getElementById("title2").innerHTML = "Trending";
+	cardRow(3,"row2");
 	cardCharity(3,3);
 	cardCharity(4,4);
 	cardCharity(5,5);
-	document.getElementById("row3").innerHTML = "Recommended For You";
+	document.getElementById("title3").innerHTML = "Recommended For You";
+	cardRow(6,"row3");
 	cardCharity(6,2);
 	cardCharity(7,0);
 	cardCharity(8,1);
