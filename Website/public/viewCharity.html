@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title id="charity_title"></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="./scripts/editCharity.js"></script>
+	<!--
+	<link rel="stylesheet" href="./styles/styles.css">
+	-->
+</head>
+
+<body onload="viewCharity(new URLSearchParams(window.location.search).get('id'))">
+    <!-- navigation bar -->
+	 <div style="background-image: url('./img/head_bg01.jpg'); background-size: cover;">
+		<p style="text-align:center;">
+			<a href="./home.html">
+				<br><img src="./img/logo_border.png" alt="CharityHub Logo">
+			</a>
+		</p>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="./home.html">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./about.html">About</a>
+				</li>
+			</ul>
+			<a class="navbar-brand" id="charity_brand"></a>
+			<input type="text" class="form-control text-center" id="new_name" placeholder="Required" style="display: none; width: 18rem; float:center;" required>
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="./register.html">Register</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./login.html">Login</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+    <!-- charity profile details -->
+	<div class="container">
+		<div class="row">
+			<div class="col">
+			</div>
+			<div class="col-8">
+				<div id="edit_logo" class="container" style="display: none; width: 24rem; float:center;">
+					<br>
+					<div class="container border rounded border-dark">
+						<h4 class="text-center">Logo</h4>
+						<input type="file" accept="image/*" class="form-control" id="new_logo">
+					</div>
+				</div>
+				<p style="text-align:center;">
+					<br><img id="charity_logo" src="data:," alt="" width="400">
+				</p>
+			</div>
+			<div class="col">
+				<br><button type="button" class="btn btn-dark btn-lg" id="editButton" onclick="editCharity(new URLSearchParams(window.location.search).get('id'))" style="float: right;">Edit Details</button>
+				<button type="button" class="btn btn-danger btn-lg" id="saveButton" onclick="saveCharity(new URLSearchParams(window.location.search).get('id'))" style="float: right; display: none;" disabled>Save Changes</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h3>Charity Type</h3>
+				<div id="types">
+				</div>
+				<div id="edit_types" style="display: none;">
+					<input type="text" class="form-control text-center" id="new_type1" placeholder="Required" required>
+					<input type="text" class="form-control text-center" id="new_type2" placeholder="Add Another">
+					<input type="text" class="form-control text-center" id="new_type3" placeholder="Add Another">
+				</div>
+				<h3>Official Website:</h3>
+				<div id = "links">
+				</div>
+				<div id="edit_links" style="display: none;">
+					<input type="url" class="form-control" id="new_url" placeholder="Website URL" required>
+					<input type="url" class="form-control" id="new_url_fb" placeholder="Facebook URL">
+					<input type="url" class="form-control" id="new_url_tw" placeholder="Twitter URL">
+					<input type="url" class="form-control" id="new_url_in" placeholder="Instagram URL">
+				</div>
+				<h3>Contact:</h3>
+				<p id="charity_contact"></p>
+				<div id="edit_contact" style="display: none;">
+					<textarea class="form-control" id="new_contact" rows="3" placeholder="Official Business Address" required></textarea>
+				</div>
+			</div>
+			<div class="col-6">
+				<h3>Description</h3>
+				<p id="charity_desc"></p>
+				<textarea class="form-control" id="new_desc" rows="15" style="display: none;"></textarea>
+			</div>
+			<div class="col">
+				<h3>Upcoming Events</h3>
+				<div id="events">
+					<p>There are no upcoming events for this organization.</p>
+				</div>
+				<div id="edit_events" style="display: none;">
+					<input type="text" class="form-control" id="new_event1" placeholder="Event Title">
+					<input type="text" class="form-control" id="new_event_date1" placeholder="Event Date">
+					<br>
+					<input type="text" class="form-control" id="new_event2" placeholder="Event Title">
+					<input type="text" class="form-control" id="new_event_date2" placeholder="Event Date">
+					<br>
+					<input type="text" class="form-control" id="new_event3" placeholder="Event Title">
+					<input type="text" class="form-control" id="new_event_date3" placeholder="Event Date">
+				</div>
+			</div>
+		</div>
+		<div class="row" id="donation_buttons">
+			<div class="col">
+				<br><a type="button" class="btn btn-dark btn-lg" href="#" style="float: right;">Make a One-Time Donation</a>
+			</div>
+			<div class="col">
+				<br><a type="button" class="btn btn-danger btn-lg" href="#" style="float: left;">Schedule a Recurring Donation</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- photo gallery -->
+	<br>
+	<div class="container">
+		<div class="border rounded border-dark" id="editCarousel" style="display: none;">
+			<h3 class="text-center">Photo Gallery</h3>
+			<div class="row">
+				<div class="col">
+					<input type="file" accept="image/*" class="form-control" id="new_photo1"><br>
+					<input type="text" class="form-control" id="new_photo_title1" placeholder="Heading" required>
+					<textarea class="form-control" id="new_photo_text1" rows="3" placeholder="Description" required></textarea>
+				</div>
+				<div class="col">
+					<input type="file" accept="image/*" class="form-control" id="new_photo2"><br>
+					<input type="text" class="form-control" id="new_photo_title2" placeholder="Heading" required>
+					<textarea class="form-control" id="new_photo_text2" rows="3" placeholder="Description" required></textarea>
+				</div>
+				<div class="col">
+					<input type="file" accept="image/*" class="form-control" id="new_photo3"><br>
+					<input type="text" class="form-control" id="new_photo_title3" placeholder="Heading" required>
+					<textarea class="form-control" id="new_photo_text3" rows="3" placeholder="Description" required></textarea>
+				</div>
+			</div>
+		</div>
+		<div id="projectCarousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#projectCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#projectCarousel" data-slide-to="1"></li>
+				<li data-target="#projectCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="d-block w-100" id="photo1" src="data:,">
+					<div class="carousel-caption d-none d-md-block">
+						<div class="card bg-dark">
+							<h4 id="photo_title1">[Title 1]</h4>
+							<p id="photo_text1">[Text 1]</p>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100" id="photo2" src="data:,">
+					<div class="carousel-caption d-none d-md-block">
+						<div class="card bg-dark">
+							<h4 id="photo_title2"></h4>
+							<p id="photo_text2"></p>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100" id="photo3" src="data:,">
+					<div class="carousel-caption d-none d-md-block">
+						<div class="card bg-dark">
+							<h4 id="photo_title3"></h4>
+							<p id="photo_text3"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#projectCarousel" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#projectCarousel" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+
+	<!-- recommendation cards -->
+	<br>
+	<div class="container">
+		<h3>Similar Charities</h3>
+		<div class='card-deck text-center' id="similar"></div>
+	</div>
+	<br><br>
+
+</body>
+
+</html>
