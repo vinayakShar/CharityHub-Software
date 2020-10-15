@@ -1,4 +1,4 @@
-![Logo](./Website/img/logo.png)
+![Logo](./Website/public/img/logo.png)
 
 # Project Team Members
 
