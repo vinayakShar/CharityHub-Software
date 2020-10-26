@@ -1,4 +1,4 @@
-var db = require('../db/access');
+const db = require('../db/access');
 const dateObj = new Date();
 
 // Obtains the current date, formatted correctly to insert into DB
@@ -35,7 +35,6 @@ function createAccountID(response) {
 function createUser(request)
 {
     console.log("Attempting to create new user...");
-    const username = request.body.username;
     const email = request.body.email;
     const password = request.body.password;
     const creationDate = createDate();
@@ -48,7 +47,7 @@ function createUser(request)
     db.query(selectIDQuery)
     .then(response => {
         const newAccountID = createAccountID(response);
-        const insertQuery = `INSERT INTO user_account${insertTypes} VALUES (${newAccountID}, 'NA', 'NA', '${email}', 1, TRUE, '${creationDate}', '${fullTimestamp}', 1, '${password}', '${username}');`;
+        const insertQuery = `INSERT INTO user_account${insertTypes} VALUES (${newAccountID}, 'NA', 'NA', '${email}', 1, TRUE, '${creationDate}', '${fullTimestamp}', 1, '${password}', 'NA');`;
         db.query(insertQuery, (error, response) => {
             if(error) {
                 throw error;
