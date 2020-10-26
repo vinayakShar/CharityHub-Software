@@ -383,7 +383,7 @@ function cardCharity(card,num){
 	document.getElementById("item_photo" + card).src = charity[num].photo1;
 	document.getElementById("item_photo" + card).alt = charity[num].photo_title1;
 	document.getElementById("item_title" + card).innerHTML = charity[num].name;
-	document.getElementById("item_url" + card).href = "./viewCharity.html?id=" + num;
+	document.getElementById("item_url" + card).href = "./view-charity?id=" + num;
 	document.getElementById("item_desc" + card).innerHTML = charity[num].photo_text1;
 	document.getElementById("item_types" + card).innerHTML = "<a type='button' class='btn btn-dark btn-sm' href='#'>" + charity[num].type1 + "</a>"
 	if( charity[num].type2 !== "" )
