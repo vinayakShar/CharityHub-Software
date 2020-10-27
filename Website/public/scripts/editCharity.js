@@ -370,9 +370,9 @@ function cardRow(icard,location){
 	var box = document.getElementById(location);
 	for ( let i = 0 ; i<3 ; i++ ) {
 		box.innerHTML = box.innerHTML
-			+ "<div class='card border-dark bg-light' style='width: 18rem;'><h5 class='card-header' id='item_title"
-			+ (icard+i) + "'></h5><a href='#' id='item_url"
-			+ (icard+i) + "'><img class='card-img-top' id='item_photo"
+			+ "<div class='card border-dark bg-light' style='width: 18rem;'><a class='text-dark' id='item_url"
+			+ (icard+i) + "'><h5 class='card-header' id='item_title"
+			+ (icard+i) + "'></h5><img class='card-img-top' id='item_photo"
 			+ (icard+i) + "' src='data:,'></a><div class='container'><p class='card-text' id='item_desc"
 			+ (icard+i) + "'></p><div class='container border border-light' id='item_types"
 			+ (icard+i) + "'></div></div></div>";
