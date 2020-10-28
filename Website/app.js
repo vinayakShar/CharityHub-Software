@@ -61,11 +61,9 @@ app.get('/view-charity', (req, res) => {
   });
 })
 
-// When user registers, create new user in DB and redirect to login route
+// When user registers, create new user in DB and redirect to home route
 app.post('/register', checkNotAuthenticated, function(req, res) {
-  createUserRoute.createUser(req);
-  res.redirect('/');
-  res.end();
+  createUserRoute.createUser(req, res);
 });
 
 // Uses passport module to login user
