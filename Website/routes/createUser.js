@@ -58,6 +58,33 @@ function createUser(request)
     .catch(error => console.log(error));
 }
 
+// Checks if there is a user that already exists with the same email
+function checkUserExists(request, response, createUserCallback)
+{
+    const email = request.body.email;
+    const checkExistsQuery = `SELECT EXISTS(SELECT * FROM user_account WHERE email = '${email}')`;
+
+    db.query(checkExistsQuery)
+    .then(res => {
+        if(res.rows[0].exists)
+        {
+            request.flash('error', 'There is a user with that email that already exists');
+            response.redirect('/');
+            response.end();
+        } else {
+            createUserCallback(request);
+            response.redirect('/');
+            response.end();
+        }
+    })
+    .catch(err => {
+        console.log(err);
+        request.flash('error', 'Internal server error');
+        response.redirect('/');
+        response.end();
+    })
+}
+
 module.exports = {
-    createUser: (request) => { createUser(request) }
+    createUser: (request, response) => { checkUserExists(request, response, createUser) }
 }
