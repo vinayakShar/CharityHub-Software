@@ -41,13 +41,13 @@ function createUser(request)
     const creationTimestamp = createTimestamp();
     const fullTimestamp = creationDate + " " + creationTimestamp;
     const selectIDQuery = `SELECT * FROM user_account ORDER BY account_id DESC LIMIT 1`;
-    const insertTypes = `(account_id, first_name, last_name, email, address_id, activebool, create_date, last_update, active, password, username)`;
+    const insertTypes = `(account_id, first_name, last_name, email, address_id, create_date, last_update, active, password, username)`;
 
     // Select the most recent entry in the DB, then create a new account number and insert into the user_account table
     db.query(selectIDQuery)
     .then(response => {
         const newAccountID = createAccountID(response);
-        const insertQuery = `INSERT INTO user_account${insertTypes} VALUES (${newAccountID}, 'NA', 'NA', '${email}', 1, TRUE, '${creationDate}', '${fullTimestamp}', 1, '${password}', 'NA');`;
+        const insertQuery = `INSERT INTO user_account${insertTypes} VALUES (${newAccountID}, 'NA', 'NA', '${email}', 0, '${creationDate}', '${fullTimestamp}', 1, '${password}', 'NA');`;
         db.query(insertQuery, (error, response) => {
             if(error) {
                 throw error;
