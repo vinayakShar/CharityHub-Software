@@ -14,6 +14,8 @@ const flash = require('express-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const initializePassport = require('./routes/loginUser/passport-config');
+const renderHomepage = require('./routes/getCharities');
+const { render } = require('ejs');
 initializePassport(passport);
 
 // Defining any modules, methods, etc. that the express application can use
@@ -34,10 +36,7 @@ app.set('view-engine', 'ejs');
 
 // Home page route
 app.get('/', function(req, res) {
-  res.render('pages/home.ejs', {
-    loggedIn: checkLoggedIn(req),
-    failLoggedInMessage: req.flash('error')
-  });
+  renderHomepage.loadHomepage(req, res, checkLoggedIn);
 });
 
 // About page route
