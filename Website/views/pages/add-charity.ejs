@@ -4,7 +4,6 @@
 <head>
 	<title>Add a Charity</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="editCharity.js"></script>
 	<!--
 	<link rel="stylesheet" href="./styles/styles.css">
 	-->
@@ -26,19 +25,33 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="form-group">
-						<label for="charity_type">Charity Type</label>
-						<input type="text" class="form-control" id="charity_type" placeholder="Choose one or more charity types..." required>
+					<label for="charity_type1">Charity Types</label>
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+								<input type="text" class="form-control" id="charity_type1" placeholder="Required" required>
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="text" class="form-control" id="charity_type2" placeholder="Optional">
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<input type="text" class="form-control" id="charity_type3" placeholder="Optional">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="charity_desc">Charity Description</label>
-				<textarea class="form-control" id="charity_desc" rows="5" placeholder="A brief description of the charity"></textarea>
+				<label for="charity_mission">Mission</label>
+				<textarea class="form-control" id="charity_mission" rows="5" placeholder="The organization's mission statement."></textarea>
 			</div>
 			<div class="form-group">
-				<label for="charity_photo_text">Charity Summary</label>
-				<input type="text" class="form-control" id="charity_photo_text" rows="3" placeholder="A one-sentence motto or summary of the charity">
+				<label for="charity_tag">Tag</label>
+				<input type="text" class="form-control" id="charity_tag" placeholder="A brief (one-sentence) description of the charity." required>
 			</div>
 			<div class="form-row">
 				<div class="col">
@@ -47,11 +60,23 @@
 						<input type="url" class="form-control" id="charity_url" placeholder="https://www...">
 					</div>
 					<div class="form-group">
-						<label for="charity_contact">Contact Info</label>
-						<textarea class="form-control" id="charity_contact" rows="3" placeholder="Official business address"></textarea>
+						<label for="charity_url_fb">Facebook</label>
+						<input type="url" class="form-control" id="charity_url_fb" placeholder="https://www...">
+					</div>
+					<div class="form-group">
+						<label for="charity_url_tw">Twitter</label>
+						<input type="url" class="form-control" id="charity_url_tw" placeholder="https://www...">
+					</div>
+					<div class="form-group">
+						<label for="charity_url_in">Instagram</label>
+						<input type="url" class="form-control" id="charity_url_in" placeholder="https://www...">
 					</div>
 				</div>
 				<div class="col">
+					<div class="form-group">
+						<label for="charity_contact">Address</label>
+						<textarea class="form-control" id="charity_contact" rows="3" placeholder="Official business address"></textarea>
+					</div>
 					<div class="form-group">
 						<label for="charity_logo">Charity Logo</label>
 						<input type="file" accept="image/*" class="form-control" id="charity_logo">
@@ -62,7 +87,7 @@
 					</div>
 				</div>
 			</div>
-			<a type="submit" class="btn btn-dark" href="./home.html" style="float: right;">Submit</a>
+			<a type="submit" class="btn btn-dark" style="float: right;">Submit</a>
 		</form>
 	</div>
 	<br><br>

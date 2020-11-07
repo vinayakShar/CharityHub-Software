@@ -15,6 +15,7 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const initializePassport = require('./routes/loginUser/passport-config');
 const renderHomepage = require('./routes/getCharities');
+const renderCharity = require('./routes/getCharity');
 const { render } = require('ejs');
 initializePassport(passport);
 
@@ -55,9 +56,7 @@ app.get('/add-charity', (req, res) => {
 
 // View charity route
 app.get('/view-charity', (req, res) => {
-  res.render('pages/view-charity.ejs', {
-    loggedIn: checkLoggedIn(req)
-  });
+  renderCharity.loadCharity(req, res, checkLoggedIn);
 })
 
 // When user registers, create new user in DB and redirect to home route

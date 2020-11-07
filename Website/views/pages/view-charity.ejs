@@ -8,13 +8,13 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script src="/scripts/editCharity.js"></script>
+	<script src="/scripts/charityDetails.js"></script>
 	<!--
 	<link rel="stylesheet" href="./styles/styles.css">
 	-->
 </head>
 
-<body onload="viewCharity(new URLSearchParams(window.location.search).get('id'))">
+<body onload="viewCharity(new URLSearchParams(window.location.search).get('id'),'<%= JSON.stringify(charities) %>')">
     <!-- navigation bar -->
 	<%- include('../partials/nav.ejs', {bg: 1}) %>
 
@@ -36,8 +36,6 @@
 				</p>
 			</div>
 			<div class="col">
-				<br><button type="button" class="btn btn-dark btn-lg" id="editButton" onclick="editCharity(new URLSearchParams(window.location.search).get('id'))" style="float: right;">Edit Details</button>
-				<button type="button" class="btn btn-danger btn-lg" id="saveButton" onclick="saveCharity(new URLSearchParams(window.location.search).get('id'))" style="float: right; display: none;" disabled>Save Changes</button>
 			</div>
 		</div>
 		<div class="row">
@@ -100,6 +98,8 @@
 	<!-- photo gallery -->
 	<br>
 	<div class="container">
+		<img class="d-block w-100" src="" id="photo">
+		<!--
 		<div class="border rounded border-dark" id="editCarousel" style="display: none;">
 			<h3 class="text-center">Photo Gallery</h3>
 			<div class="row">
@@ -164,6 +164,7 @@
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
+		-->
 	</div>
 
 	<!-- recommendation cards -->
