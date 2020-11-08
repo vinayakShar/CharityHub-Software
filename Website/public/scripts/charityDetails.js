@@ -1,7 +1,30 @@
 var charity = '';
+var event = '';
 
-function viewCharity(num,orgs){
+function getHome(orgs,events){
 	charity = JSON.parse(orgs);
+	event = JSON.parse(events);
+	document.getElementById("title1").innerHTML = "Featured";
+	cardRow(0,"row1");
+	cardCharity(0,0);
+	cardCharity(1,1);
+	cardCharity(2,2);
+	document.getElementById("title2").innerHTML = "Trending";
+	cardRow(3,"row2");
+	cardCharity(3,3);
+	cardCharity(4,4);
+	cardCharity(5,5);
+	document.getElementById("title3").innerHTML = "Recommended For You";
+	cardRow(6,"row3");
+	cardCharity(6,2);
+	cardCharity(7,0);
+	cardCharity(8,1);
+	homeEvents();
+}
+
+function viewCharity(num,orgs,events){
+	charity = JSON.parse(orgs);
+	event = JSON.parse(events);
 	loadCharity(num);
 	cardRow(0,"similar");
 	cardCharity(0,1);
@@ -42,20 +65,24 @@ function loadCharity(num){
 		document.getElementById("charity_desc").innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu lobortis elementum nibh tellus molestie nunc. Fringilla urna porttitor rhoncus dolor purus non enim. Ac odio tempor orci dapibus ultrices in. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Feugiat nibh sed pulvinar proin gravida hendrerit lectus a. Donec ac odio tempor orci. Nascetur ridiculus mus mauris vitae. Ut lectus arcu bibendum at varius. Non arcu risus quis varius quam quisque id diam."; // Dummy description if blank
 
 	// Events
-	/*
-	if( charity[num].event1 !== "" )
-		document.getElementById("events").innerHTML = "<button type='button' class='btn btn-info' href='#'>" + charity[num].event1 + "</button><p>" + charity[num].event_date1 + "</p>"
-	else
-		document.getElementById("events").innerHTML = ""
-	if( charity[num].event2 !== "" )
-		document.getElementById("events").innerHTML = document.getElementById("events").innerHTML + "<button type='button' class='btn btn-info' href='#'>" + charity[num].event2 + "</button><p>" + charity[num].event_date2 + "</p>"
-	if( charity[num].event3 !== "" )
-		document.getElementById("events").innerHTML = document.getElementById("events").innerHTML + "<button type='button' class='btn btn-info' href='#'>" + charity[num].event3 + "</button><p>" + charity[num].event_date3 + "</p>"
-	if( charity[num].event1 === "" && charity[num].event2 === "" && charity[num].event3 === "" )
-		document.getElementById("events").innerHTML = "There are no upcoming events for this organization."
-	*/
-	// Placeholder Events
-	document.getElementById("events").innerHTML = "<button type='button' class='btn btn-info' href='#'>Project Presentations</button><p>November 30, 2020</p><button type='button' class='btn btn-info' href='#'>Milestone 6</button><p>December 4, 2020</p><button type='button' class='btn btn-info' href='#'>Final Exam</button><p>December 9, 2020</p>"
+	if(event[0]){
+		var eventDate = new Date(event[0].event_date).toDateString();
+		document.getElementById("events").innerHTML = 
+			"<button type='button' class='btn btn-info' href='#'>" + event[0].title + 
+			"</button><p>" + eventDate.substring(4, 10) + "," + eventDate.substring(10, 15) + "</p>";
+	}
+	if(event[1]){
+		var eventDate = new Date(event[1].event_date).toDateString();
+		document.getElementById("events").innerHTML = document.getElementById("events").innerHTML + 
+			"<button type='button' class='btn btn-info' href='#'>" + event[1].title + 
+			"</button><p>" + eventDate.substring(4, 10) + "," + eventDate.substring(10, 15) + "</p>";
+	}
+	if(event[2]){
+		var eventDate = new Date(event[2].event_date).toDateString();
+		document.getElementById("events").innerHTML = document.getElementById("events").innerHTML + 
+			"<button type='button' class='btn btn-info' href='#'>" + event[2].title + 
+			"</button><p>" + eventDate.substring(4, 10) + "," + eventDate.substring(10, 15) + "</p>";
+	}
 
 	// Photo
 	document.getElementById("photo").src = './img/charity/' + charity[num].org_id + '.jpg';
@@ -105,21 +132,30 @@ function cardCharity(card,num){
 		document.getElementById("item_types" + card).innerHTML = document.getElementById("item_types" + card).innerHTML + " <a type='button' class='btn btn-dark btn-sm' href='#'>" + charity[num].type3 + "</a>"
 }
 
-function getHome(orgs){
-	charity = JSON.parse(orgs);
-	document.getElementById("title1").innerHTML = "Featured";
-	cardRow(0,"row1");
-	cardCharity(0,0);
-	cardCharity(1,1);
-	cardCharity(2,2);
-	document.getElementById("title2").innerHTML = "Trending";
-	cardRow(3,"row2");
-	cardCharity(3,3);
-	cardCharity(4,4);
-	cardCharity(5,5);
-	document.getElementById("title3").innerHTML = "Recommended For You";
-	cardRow(6,"row3");
-	cardCharity(6,2);
-	cardCharity(7,0);
-	cardCharity(8,1);
+function homeEvents(){
+	for ( let i = 0 ; i < 5 ; i++ ) {
+		var eventDate = new Date(event[i].event_date).toDateString();
+		if(event[i].description) {var eventDesc = event[i].description;}
+		else{var eventDesc = '';}
+		document.getElementById("events").innerHTML = document.getElementById("events").innerHTML + 
+			"<div class='card rounded border-dark text-center'>" + 
+				"<a href='./view-charity?id=" + event[i].org_id + "'>" + 
+					"<h5 class='card-header bg-danger text-light'>" + 
+						event[i].title + 
+					"</h5>" + 
+				"</a>" + 
+				"<div class='card-body'>" + 
+					"<span class='card-text'>" + 
+						 eventDesc + 
+					"</span>" + 
+					"<br>" + 
+					"<span class='card-text font-weight-bold'>" + 
+						eventDate.substring(4, 10) + "," + eventDate.substring(10, 15) + 
+					"</span>" + 
+				"</div>" + 
+				"<a type='button' class='btn btn-secondary' href='./view-charity?id=" + event[i].org_id + "'>" + 
+					charity[event[i].org_id].name + 
+				"</a>" + 
+			"</div>";
+	}
 }

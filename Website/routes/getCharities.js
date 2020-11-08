@@ -15,14 +15,30 @@ function getCharityInfo(req, res, checkLoggedIn)
         org_details.org_id = org_account.org_id
     LIMIT 9;`;
 
+    var getEventsQuery = `SELECT * FROM event ORDER BY event_date LIMIT 10;`;
+
     db.query(charityInfoQuery)
     .then(data => {
         console.log(data.rows);
-        res.render('pages/home.ejs', {
-            loggedIn: checkLoggedIn(req),
-            failLoggedInMessage: req.flash('error'),
-            charities: data.rows
-        });
+        // res.render('pages/home.ejs', {
+        //     loggedIn: checkLoggedIn(req),
+        //     failLoggedInMessage: req.flash('error'),
+        //     charities: data.rows
+        // });
+        db.query(getEventsQuery)
+        .then(eventData => {
+            console.log(eventData);
+            res.render('pages/home.ejs', {
+                loggedIn: checkLoggedIn(req),
+                failLoggedInMessage: req.flash('error'),
+                charities: data.rows,
+                events: eventData.rows
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send("Error code 500: Internal server error");
+        })
     })
     .catch(err => {
         console.log(err);

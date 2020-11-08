@@ -84,8 +84,19 @@ CREATE TABLE public.org_details (
 );
 
 
--- User Account Table
+-- Event Table
 
+CREATE TABLE public.event (
+	event_id integer NOT NULL,
+    title text NOT NULL,
+    event_date date NOT NULL,
+    event_time time,
+    org_id integer NOT NULL,
+    description text
+);
+
+
+-- User Account Table
 
 CREATE TABLE public.user_account (
     account_id integer NOT NULL,
@@ -203,6 +214,25 @@ VALUES(4, 'Food for all those in our community who need it.', 'Excepteur sint oc
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
 VALUES(5, 'Assisting all children in reaching their goals & their dreams.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'International', 'Education', 'Children', '#', '', '', '', 1);
+
+
+-- Event INSERT
+
+INSERT INTO public.event (event_id, title, event_date, org_id, description)
+VALUES(0, 'Launch Event', '2020-11-30', 0, 'The public launch of CharityHub');
+
+INSERT INTO public.event (event_id, title, event_date, org_id)
+VALUES(1, 'Milestone 6', '2020-12-04', 0);
+
+INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
+VALUES(2, 'Final Exam', '2020-12-10', '13:30:00', 0, 'Final Exam for CSCI 3308');
+
+INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
+VALUES(3, 'Puppy Event', '2020-12-06', '11:30:00', 1, 'Hurray puppies!');
+
+INSERT INTO public.event (event_id, title, event_date, event_time, org_id)
+VALUES(4, 'Food Drive', '2020-12-02', '16:30:00', 4);
+
 
 
 -- City INSERT (600 Cities)
@@ -950,6 +980,9 @@ ALTER TABLE ONLY public.org_account
 
 ALTER TABLE ONLY public.org_details
     ADD CONSTRAINT org_details_pkey PRIMARY KEY (org_id);
+
+ALTER TABLE ONLY public.event
+    ADD CONSTRAINT event_pkey PRIMARY KEY (event_id);
 
 ALTER TABLE ONLY public.payment
     ADD CONSTRAINT payment_pkey PRIMARY KEY (payment_id);

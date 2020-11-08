@@ -17,6 +17,7 @@ const initializePassport = require('./routes/loginUser/passport-config');
 const renderHomepage = require('./routes/getCharities');
 const renderCharity = require('./routes/getCharity');
 const { render } = require('ejs');
+const url = require('url');
 initializePassport(passport);
 
 // Defining any modules, methods, etc. that the express application can use
@@ -56,7 +57,7 @@ app.get('/add-charity', (req, res) => {
 
 // View charity route
 app.get('/view-charity', (req, res) => {
-  renderCharity.loadCharity(req, res, checkLoggedIn);
+  renderCharity.loadCharity(req, res, url, checkLoggedIn);
 })
 
 // When user registers, create new user in DB and redirect to home route
