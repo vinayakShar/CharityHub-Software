@@ -5,7 +5,7 @@ function getCharityInfo(req, res, url, checkLoggedIn)
     const search = url.parse(req.url, true).query;
 
     if (search.page) {
-        var offset = search.page * 3;
+        var offset = search.page * 6;
     }
     else{
         var offset = 0;
@@ -19,18 +19,18 @@ function getCharityInfo(req, res, url, checkLoggedIn)
     WHERE
         org_details.org_id = org_account.org_id
     AND
-        (org_details.type1 ~ '${search.term}'
+        (org_details.type1 ~* '${search.term}'
     OR
-        org_details.type2 ~ '${search.term}'
+        org_details.type2 ~* '${search.term}'
     OR
-        org_details.type3 ~ '${search.term}'
+        org_details.type3 ~* '${search.term}'
     OR
-        org_account.name ~ '${search.term}'
+        org_account.name ~* '${search.term}'
     OR
-        org_details.tag ~ '${search.term}'
+        org_details.tag ~* '${search.term}'
     OR
-        org_details.mission ~ '${search.term}')
-    LIMIT 4
+        org_details.mission ~* '${search.term}')
+    LIMIT 7
     OFFSET ${offset};`;
 
     db.query(charityInfoQuery)

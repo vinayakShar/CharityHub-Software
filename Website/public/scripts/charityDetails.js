@@ -1,27 +1,17 @@
 var charity = '';
 var event = '';
 var address = '';
+var order = [];
 
 function getHome(charities,events){
 	charity = JSON.parse(charities);
 	event = JSON.parse(events);
-	document.getElementById("title1").innerHTML = "Featured";
 	cardRow(0,"row1");
-	cardCharity(0,0);
-	cardCharity(1,1);
-	cardCharity(2,2);
-	document.getElementById("title2").innerHTML = "Trending";
 	cardRow(3,"row2");
-	cardCharity(3,3);
-	cardCharity(4,4);
-	cardCharity(5,5);
-	document.getElementById("title3").innerHTML = "Recommended For You";
 	cardRow(6,"row3");
-	cardCharity(6,6);
-	cardCharity(7,7);
-	cardCharity(8,8);
 	homeEvents();
 	homeTypes();
+	randCards(9);
 }
 
 function viewCharity(num,charities,events,addresses){
@@ -30,9 +20,7 @@ function viewCharity(num,charities,events,addresses){
 	address = JSON.parse(addresses);
 	loadCharity(num);
 	cardRow(0,"similar");
-	cardCharity(0,1);
-	cardCharity(1,2);
-	cardCharity(2,3);
+	randCards(3,num);
 }
 
 function getSearch(charities,term,page){
@@ -40,17 +28,8 @@ function getSearch(charities,term,page){
 	if(page == null){page = 0};
 	if(charity[0]){
 		cardRow(0,"row1");
-		cardCharity(0,0);
-		cardCharity(1,1);
-		cardCharity(2,2);
-		//cardRow(3,"row2");
-		//cardCharity(3,3);
-		//cardCharity(4,4);
-		//cardCharity(5,5);
-		//cardRow(6,"row3");
-		//cardCharity(6,6);
-		//cardCharity(7,7);
-		//cardCharity(8,8);
+		cardRow(3,"row2");
+		orderCards(6);
 	}
 	else{document.getElementById("row1").innerHTML = '<p>There are no charities matching your search.</p>';}
 	if(page>0){
@@ -59,11 +38,33 @@ function getSearch(charities,term,page){
 	else{
 		document.getElementById("prev_page").style.display = "none";
 	}
-	if(charity[3]){
+	if(charity[6]){
 		document.getElementById("next_page").href = '/search?term=' + term + '&page=' + (page+1);
 	}
 	else{
 		document.getElementById("next_page").style.display = "none";
+	}
+}
+
+function orderCards(num){
+	for ( i = 0 ; i < num ; i++ ) {
+		cardCharity(i,i);
+	}
+}
+
+function randCards(num, id = -1){
+	order = [];
+	for ( let i = 0; i < charity.length ; i++ ) {
+		if ( i != id ){
+			order.push(i);
+		}
+	}
+	for ( let i = order.length - 1; i > 0; i-- ) {
+		let j = Math.floor(Math.random() * (i + 1));
+		[order[i], order[j]] = [order[j], order[i]];
+	}
+	for ( i = 0 ; i < num ; i++ ) {
+		cardCharity(i,order[i]);
 	}
 }
 
@@ -107,24 +108,18 @@ function loadCharity(num){
 		document.getElementById("charity_desc").innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu lobortis elementum nibh tellus molestie nunc. Fringilla urna porttitor rhoncus dolor purus non enim. Ac odio tempor orci dapibus ultrices in. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Feugiat nibh sed pulvinar proin gravida hendrerit lectus a. Donec ac odio tempor orci. Nascetur ridiculus mus mauris vitae. Ut lectus arcu bibendum at varius. Non arcu risus quis varius quam quisque id diam."; // Dummy description if blank
 
 	// Events
-	if(event[0]){
-		var eventDate = new Date(event[0].event_date).toDateString();
-		document.getElementById("events").innerHTML = 
-			"<button type='button' class='btn btn-info' href='#'>" + event[0].title + 
-			"</button><p>" + eventDate.substring(4, 10) + "," + eventDate.substring(10, 15) + "</p>";
+	for ( let i=0 ; i < 3 ; i++ ) {
+		if(event[i]){
+			var eventDate = new Date(event[i].event_date).toDateString();
+			if(event[i].description) {var eventDesc = event[i].description;}
+			else{var eventDesc = '';}
+			document.getElementById("events").innerHTML = document.getElementById("events").innerHTML + 
+				"<div class='card my-2'><button type='button' class='btn btn-info' onclick='eventDesc(" + i + ")'>" + event[i].title + 
+				"</button><br><span>" + eventDate.substring(4, 10) + "," + eventDate.substring(10, 15) + "</span>" + 
+				'<span class="font-italic" id="event_desc' + i + '" style="display: none;">' + eventDesc + '</span></div>';
+		}
 	}
-	if(event[1]){
-		var eventDate = new Date(event[1].event_date).toDateString();
-		document.getElementById("events").innerHTML = document.getElementById("events").innerHTML + 
-			"<button type='button' class='btn btn-info' href='#'>" + event[1].title + 
-			"</button><p>" + eventDate.substring(4, 10) + "," + eventDate.substring(10, 15) + "</p>";
-	}
-	if(event[2]){
-		var eventDate = new Date(event[2].event_date).toDateString();
-		document.getElementById("events").innerHTML = document.getElementById("events").innerHTML + 
-			"<button type='button' class='btn btn-info' href='#'>" + event[2].title + 
-			"</button><p>" + eventDate.substring(4, 10) + "," + eventDate.substring(10, 15) + "</p>";
-	}
+	if(event[0]==null){document.getElementById("events").innerHTML = '<p>There are no upcoming events for this organization.</p>'};
 	document.getElementById("add_event").href = '/add-event?id=' + charity[num].org_id;
 
 	// Photo
@@ -148,6 +143,10 @@ function loadCharity(num){
 	else
 		document.getElementById("projectCarousel").style.display = "none";
 	*/
+}
+
+function eventDesc(num){
+	document.getElementById("event_desc" + num).style.display = document.getElementById("event_desc" + num).style.display === 'none' ? '' : 'none';
 }
 
 function cardRow(icard,location){
