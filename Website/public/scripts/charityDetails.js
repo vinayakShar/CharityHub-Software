@@ -207,7 +207,7 @@ function homeEvents(){
 }
 
 function homeTypes(){
-	var types = ['Volunteering', 'Health', 'Conservation', 'Disaster Relief', 'Environment', 'International', 'Animals', 'Education', 'Local']
+	var types = ['Volunteering', 'Health', 'Conservation', 'Disaster Relief', 'Food Bank', 'International', 'Animals', 'Local']
 	for ( let i = 0 ; i < types.length ; i++ ) {
 		document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + 
 		"<a type='button' class='btn btn-lg btn-dark my-1 mr-1' href='/search?term=" + types[i] + "'>" + types[i] + "</a>";

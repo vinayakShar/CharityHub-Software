@@ -189,28 +189,28 @@ INSERT INTO public.org_account (org_id, name, category_id, create_date, email, p
 VALUES(3, 'The Rotary Foundation', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(4, 'Pet Adoption', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+VALUES(4, 'Humane Society of Boulder Valley', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(5, 'Homeless Assistance', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+VALUES(5, 'Boulder Shelter for the Homeless', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(6, 'Disaster Relief', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+VALUES(6, 'Direct Relief', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(7, 'Food Bank', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+VALUES(7, 'Community Food Share', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(8, 'Global Education', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+VALUES(8, 'International Childrens Fund', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 
 -- Details INSERT
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(0, 'Connecting people to charity', 'Create a secure marketplace for charitable fundraising that puts the power of change in the hands of the people.', 'Support', 'International', 'Volunteering', '#', '', '', '', 0);
+VALUES(0, 'Connecting people to charity', 'Create a secure marketplace for charitable fundraising that puts the power of change in the hands of the people.', 'Support', 'International', '', '#', '', '', '', 0);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(1, 'Working at the intersection of environment & human needs', 'Founded in 1982, World Resources Institute (WRI) is a global research organization that spans more than 50 countries, with offices in the United States, China, India, Brazil, Indonesia and more. WRIs mission is to move human society to live in ways that protect Earths environment and its capacity to provide for the needs and aspirations of current and future generations. WRIs more than 450 experts and staff work closely with leaders to turn big ideas into action to sustain our natural resources-the foundation of economic opportunity and human well-being. Our work focuses on six critical issues at the intersection of environment and development: climate, energy, food, forests, water, and cities and transport.', 'Conservation', 'Environment', 'International', 'https://www.wri.org/', 'https://www.facebook.com/worldresources/', 'https://twitter.com/WorldResources', 'https://www.instagram.com/worldresources', 1);
+VALUES(1, 'Working at the intersection of environment & human needs', 'Founded in 1982, World Resources Institute (WRI) is a global research organization that spans more than 50 countries, with offices in the United States, China, India, Brazil, Indonesia and more. WRIs mission is to move human society to live in ways that protect Earths environment and its capacity to provide for the needs and aspirations of current and future generations. WRIs more than 450 experts and staff work closely with leaders to turn big ideas into action to sustain our natural resources-the foundation of economic opportunity and human well-being. Our work focuses on six critical issues at the intersection of environment and development: climate, energy, food, forests, water, and cities and transport.', 'Conservation', 'International', '', 'https://www.wri.org/', 'https://www.facebook.com/worldresources/', 'https://twitter.com/WorldResources', 'https://www.instagram.com/worldresources', 1);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
 VALUES(2, 'Providing emergency medical care', 'Doctors Without Borders, USA (DWB-USA) was founded in 1990 in New York City to raise funds, create awareness, recruit field staff, and advocate with the United Nations and US government on humanitarian concerns. Doctors Without Borders/Médecins Sans Frontières (MSF) is an international medical humanitarian organization that provides aid in nearly 60 countries to people whose survival is threatened by violence, neglect, or catastrophe, primarily due to armed conflict, epidemics, malnutrition, exclusion from health care, or natural disasters.', 'International', 'Health', 'Disaster Relief', 'http://www.doctorswithoutborders.org/', 'https://www.facebook.com/msf.english', 'https://www.twitter.com/MSF_USA', 'https://www.instagram.com/doctorswithoutborders', 2);
@@ -219,19 +219,19 @@ INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, 
 VALUES(3, 'Enabling Rotarians to advance world understanding, goodwill, and peace', 'The Rotary Foundations mission is to advance world understanding, goodwill, and peace. Rotary Foundation grants promote peace, fight disease, provide clean water and sanitation, sustain mothers and children, improve education, and strengthen local economies. The Foundation is a worldwide leader in the efforts to eradicate polio through its partnership in the Global Polio Eradication Initiative (GPEI). Since 1988, Rotary and its partners in the GPEI have immunized over 3 billion children, reducing the incidence of polio by 99.9 percent and eradicating it from all but two countries. Rotary has contributed more than $2.1 billion and thousands of volunteer hours to eradication efforts. The Foundation also funds training of peacemakers through the Rotary Peace Center program. Most recently, Rotarys Disaster Response Grants are making it possible for Rotary members to respond effectively to local recovery efforts as they unfold, and COVID-19 was recently added as an eligible activity.', 'International', 'Health', 'Education', 'https://www.rotary.org/en/about-rotary/rotary-foundation', 'https://www.facebook.com/rotary', 'https://twitter.com/rotary', 'http://instagram.com/rotaryinternational', 3);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(4, 'Finding forever homes for dogs, cats, & all pets', '', 'Animals', 'Local', 'Volunteering', '#', '', '', '', 0);
+VALUES(4, 'Promoting healthy relationships between pets and people', 'It is the mission of the Humane Society of Boulder Valley to protect and enhance the lives of companion animals by promoting healthy relationships between pets and people. We stay true to our mission statement through a diverse curriculum of programs and services. Over a century ago, the Humane Society of Boulder Valley was founded to protect those who did not have a voice to protect themselves. This mission holds true today as we counter animal neglect and cruelty by partnering with community animal care and control and law enforcement agencies. We offer refuge to over 8,000 animals each year.', 'Animals', 'Local', '', 'https://www.boulderhumane.org/', 'https://www.facebook.com/HumaneBoulder/', 'https://twitter.com/humaneboulder', 'https://www.instagram.com/humanesocietyofbouldervalley/', 4);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(5, 'Assisting the most vulnerable members of our community', '', 'Homeless', 'Local', 'Volunteering', '#', '', '', '', 0);
+VALUES(5, 'Food, shelter, hope', 'It is the mission of the Boulder Shelter for the Homeless to create an avenue to stable housing for our communitys homeless adults, from a foundation of supportive and safe shelter.', 'Homeless', 'Local', 'Health', 'https://www.bouldershelter.org/', 'https://www.facebook.com/thebouldershelter/', 'https://twitter.com/bouldershelter', '', 5);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(6, 'Providing critical support for those affected by disaster', '', 'International', 'Disaster Relief', 'Volunteering', '#', '', '', '', 0);
+VALUES(6, 'Deliver a world of good', 'Direct Relief is a humanitarian organization, active in all 50 states and more than 80 countries, with a mission to improve the health and lives of people affected by poverty or emergencies. Nongovernmental, nonsectarian, and not-for-profit, Direct Relief provides assistance to people and communities without regard to politics, religion, ethnic identities or ability to pay. Direct Reliefs assistance programs - which focus on emergency preparedness and disaster response and the prevention and treatment of disease - are tailored to the particular circumstances and needs of the worlds most vulnerable and at-risk populations. Direct Relief honors the generosity of its donors by following a firm policy of full transparency in all of its operations. This tradition of transparent, direct and targeted assistance, provided in a manner that respects and involves the people served, has been a hallmark of the organization since its founding in 1948 by refugee war immigrant William Zimdin.', 'International', 'Disaster Relief', 'Volunteering', 'https://www.directrelief.org/', 'https://www.facebook.com/DirectRelief/', 'https://twitter.com/DirectRelief', 'https://www.instagram.com/directrelief', 6);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(7, 'Food for all those in our community who need it', '', 'Local', 'Volunteering', 'Health', '#', '', '', '', 0);
+VALUES(7, 'More than a food bank', 'At Community Food Share, we are more than a food bank - we are a neighbor and a friend who has been part of the fabric of Boulder and Broomfield Counties for decades. We know that ending hunger in our communities requires collaboration. That is why we not only provide food directly to families, seniors, students, and others, we are also a hub - delivering millions of pounds of food a year to local partners to reach people in their communities. Because when we work together, we give more people access to fresh, nutritious food. You can join the fight against local hunger with gifts of funds. Your gift makes an impact you can see - for every $1 you donate, we can provide 3 meals. You can also give food and time.', 'Food Bank', 'Local', 'Volunteering', 'https://www.communityfoodshare.org/', 'https://www.facebook.com/communityfoodshare/', 'https://twitter.com/CommFoodShare', 'https://www.instagram.com/communityfoodshareco/', 7);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(8, 'Assisting all children in reaching their goals & their dreams', '', 'International', 'Education', 'Children', '#', '', '', '', 0);
+VALUES(8, 'Bridging the gap from your hands to theirs', 'The International Childrens Fund (ICF) has come to the aid of needy children worldwide since 1978. We have helped distribute life-saving food, clothing, and medicine across the African continent. We have also supported the construction of orphanages, churches, schools and vocational training centers, drilled water wells to provide safe drinking water, and established agricultural projects. Practical, direct grassroots action is the main focus of ICF. We channel the Christian concern of Americans into street-level impact in African villages, where logistics often frustrate traditional relief efforts. The secret ingredient is a trustworthy network of local, native missionary partners, who personally shepherd gifts of food, clothing, medicine, equipment, and funds to the places children need them most.', 'International', 'Health', 'Children', 'https://www.icfaid.com/', 'https://www.facebook.com/ICFaid/', '', '', 8);
 
 
 -- Address INSERT
@@ -248,6 +248,21 @@ VALUES(2, '40 Rector Street', '16th Floor', 'New York, NY', 0, '10006', '(212) 6
 INSERT INTO public.address (address_id, address, address2, district, city_id, postal_code, phone)
 VALUES(3, 'One Rotary Center', '1560 Sherman Avenue', 'Evanston, IL', 0, '60201', '(866) 976-8279');
 
+INSERT INTO public.address (address_id, address, district, city_id, postal_code, phone)
+VALUES(4, ' 2323 55th Street', 'Boulder, CO', 0, '80301', '(303) 442-4030');
+
+INSERT INTO public.address (address_id, address, district, city_id, postal_code, phone)
+VALUES(5, '4869 North Broadway', 'Boulder, CO', 0, '80304', '(303) 442-4646');
+
+INSERT INTO public.address (address_id, address, district, city_id, postal_code, phone)
+VALUES(6, '6100 Wallace Becknell Road', 'Santa Barbara, CA', 0, '93117', '(805) 964-4767');
+
+INSERT INTO public.address (address_id, address, district, city_id, postal_code, phone)
+VALUES(7, '650 S. Taylor Avenue', 'Louisville, CO', 0, '80027', '(303) 652-3663');
+
+INSERT INTO public.address (address_id, address, address2, district, city_id, postal_code, phone)
+VALUES(8, 'P.O. Box 583', ' 619 Main Street', 'Neenah, WI', 0, '54957', '(920) 729-5721');
+
 
 -- Event INSERT
 
@@ -257,14 +272,14 @@ VALUES(0, 'Launch Party', '2020-11-30', 0, 'The public launch of CharityHub');
 INSERT INTO public.event (event_id, title, event_date, org_id, description)
 VALUES(1, 'Presentation', '2020-12-02', 0, 'Project Presentation for CharityHub');
 
-INSERT INTO public.event (event_id, title, event_date, event_time, org_id)
-VALUES(2, 'Final Exam', '2020-12-10', '13:30:00', 0);
+INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
+VALUES(2, 'Final Exam', '2020-12-10', '13:30:00', 0, 'Review on Dec 7th');
 
 INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
-VALUES(3, 'Puppy Event', '2020-12-06', '11:30:00', 4, 'Adorable puppies for adoption!');
+VALUES(3, 'Fund Run', '2020-12-06', '11:30:00', 6, 'Virtual Race');
 
-INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
-VALUES(4, 'Food Drive', '2020-12-01', '16:30:00', 7, 'Collecting food donations all day');
+INSERT INTO public.event (event_id, title, event_date, org_id, description)
+VALUES(4, 'Gives Day', '2020-12-08', 6, 'Celebrate philanthropy');
 
 
 
