@@ -16,6 +16,7 @@ const methodOverride = require('method-override');
 const initializePassport = require('./routes/loginUser/passport-config');
 const renderHomepage = require('./routes/getCharities');
 const renderCharity = require('./routes/getCharity');
+const renderSearch = require('./routes/getSearch');
 const { render } = require('ejs');
 const url = require('url');
 initializePassport(passport);
@@ -66,6 +67,11 @@ app.get('/add-event', (req, res) => {
     loggedIn: checkLoggedIn(req)
   });
 });
+
+// Search route
+app.get('/search', (req, res) => {
+  renderSearch.loadSearch(req, res, url, checkLoggedIn);
+})
 
 // When user registers, create new user in DB and redirect to home route
 app.post('/register', checkNotAuthenticated, function(req, res) {

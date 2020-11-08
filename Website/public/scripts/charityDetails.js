@@ -21,6 +21,7 @@ function getHome(charities,events){
 	cardCharity(7,7);
 	cardCharity(8,8);
 	homeEvents();
+	homeTypes();
 }
 
 function viewCharity(num,charities,events,addresses){
@@ -34,6 +35,25 @@ function viewCharity(num,charities,events,addresses){
 	cardCharity(2,3);
 }
 
+function getSearch(charities){
+	charity = JSON.parse(charities);
+	if(charity[0]){
+		cardRow(0,"row1");
+		cardCharity(0,0);
+		cardCharity(1,1);
+		cardCharity(2,2);
+		cardRow(3,"row2");
+		cardCharity(3,3);
+		cardCharity(4,4);
+		cardCharity(5,5);
+		cardRow(6,"row3");
+		cardCharity(6,6);
+		cardCharity(7,7);
+		cardCharity(8,8);
+	}
+	else{document.getElementById("row1").innerHTML = '<p>There are no charities matching your search.</p>';}
+}
+
 function loadCharity(num){
 	// Title & Logo
 	document.getElementById("charity_title").innerHTML = charity[num].name + " - CharityHub Profile";
@@ -43,11 +63,11 @@ function loadCharity(num){
 	document.getElementById("charity_tag").innerHTML = charity[num].tag;
 
 	// Charity Type List
-	document.getElementById("types").innerHTML = "<a type='button' id='type1' class='btn btn-dark btn-sm my-1' href='#'>" + charity[num].type1 + "</a>"
+	document.getElementById("types").innerHTML = "<a type='button' id='type1' class='btn btn-dark btn-sm my-1' href='/search?term=" + charity[num].type1 + "'>" + charity[num].type1 + "</a>"
 	if( charity[num].type2 !== "" )
-		document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + " <a type='button' id='type2' class='btn btn-dark btn-sm my-1' href='#'>" + charity[num].type2 + "</a>"
+		document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + " <a type='button' id='type2' class='btn btn-dark btn-sm my-1' href='/search?term=" + charity[num].type2 + "'>" + charity[num].type2 + "</a>"
 	if( charity[num].type3 !== "" )
-		document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + " <a type='button' id='type2' class='btn btn-dark btn-sm my-1' href='#'>" + charity[num].type3 + "</a>"
+		document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + " <a type='button' id='type2' class='btn btn-dark btn-sm my-1' href='/search?term=" + charity[num].type3 + "'>" + charity[num].type3 + "</a>"
 	document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + "<br><br>";
 
 	// Address
@@ -120,26 +140,30 @@ function loadCharity(num){
 function cardRow(icard,location){
 	var box = document.getElementById(location);
 	for ( let i = 0 ; i<3 ; i++ ) {
-		box.innerHTML = box.innerHTML
-			+ "<div class='card border-dark bg-light' style='width: 18rem;'><a class='text-dark' style='text-decoration: none;' id='item_url"
-			+ (icard+i) + "'><h5 class='card-header' id='item_title"
-			+ (icard+i) + "'></h5><img class='card-img-top' id='item_photo"
-			+ (icard+i) + "' src='data:,'></a><div class='container'><span class='card-text' id='item_desc"
-			+ (icard+i) + "'></span><div class='container border border-light' id='item_types"
-			+ (icard+i) + "'></div></div></div>";
+		if ( charity[icard+i] ){
+			box.innerHTML = box.innerHTML
+				+ "<div class='card border-dark bg-light' style='width: 18rem;'><a class='text-dark' style='text-decoration: none;' id='item_url"
+				+ (icard+i) + "'><h5 class='card-header' id='item_title"
+				+ (icard+i) + "'></h5><img class='card-img-top' id='item_photo"
+				+ (icard+i) + "' src='data:,'></a><div class='container'><span class='card-text' id='item_desc"
+				+ (icard+i) + "'></span><div class='container border border-light' id='item_types"
+				+ (icard+i) + "'></div></div></div>";
+		}
 	}
 }
 
 function cardCharity(card,num){
-	document.getElementById("item_photo" + card).src = './img/charity/' + charity[num].org_id + '.jpg';
-	document.getElementById("item_title" + card).innerHTML = charity[num].name;
-	document.getElementById("item_url" + card).href = "./view-charity?id=" + charity[num].org_id;
-	document.getElementById("item_desc" + card).innerHTML = charity[num].tag;
-	document.getElementById("item_types" + card).innerHTML = "<a type='button' class='btn btn-dark btn-sm my-1' href='#'>" + charity[num].type1 + "</a>"
-	if( charity[num].type2 !== "" )
-		document.getElementById("item_types" + card).innerHTML = document.getElementById("item_types" + card).innerHTML + " <a type='button' class='btn btn-dark btn-sm my-1' href='#'>" + charity[num].type2 + "</a>"
-	if( charity[num].type3 !== "" )
-		document.getElementById("item_types" + card).innerHTML = document.getElementById("item_types" + card).innerHTML + " <a type='button' class='btn btn-dark btn-sm my-1' href='#'>" + charity[num].type3 + "</a>"
+	if ( charity[num] ){
+		document.getElementById("item_photo" + card).src = './img/charity/' + charity[num].org_id + '.jpg';
+		document.getElementById("item_title" + card).innerHTML = charity[num].name;
+		document.getElementById("item_url" + card).href = "./view-charity?id=" + charity[num].org_id;
+		document.getElementById("item_desc" + card).innerHTML = charity[num].tag;
+		document.getElementById("item_types" + card).innerHTML = "<a type='button' class='btn btn-dark btn-sm my-1' href='/search?term=" + charity[num].type1 + "'>" + charity[num].type1 + "</a>"
+		if( charity[num].type2 !== "" )
+			document.getElementById("item_types" + card).innerHTML = document.getElementById("item_types" + card).innerHTML + " <a type='button' class='btn btn-dark btn-sm my-1' href='/search?term=" + charity[num].type2 + "'>" + charity[num].type2 + "</a>"
+		if( charity[num].type3 !== "" )
+			document.getElementById("item_types" + card).innerHTML = document.getElementById("item_types" + card).innerHTML + " <a type='button' class='btn btn-dark btn-sm my-1' href='/search?term=" + charity[num].type3 + "'>" + charity[num].type3 + "</a>"
+	}
 }
 
 function homeEvents(){
@@ -168,4 +192,16 @@ function homeEvents(){
 				"</a>" + 
 			"</div>";
 	}
+}
+
+function homeTypes(){
+	var types = ['Volunteering', 'Health', 'Conservation', 'Disaster Relief', 'Environment', 'International', 'Animals', 'Education', 'Local']
+	for ( let i = 0 ; i < types.length ; i++ ) {
+		document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + 
+		"<a type='button' class='btn btn-lg btn-dark my-1 mr-1' href='/search?term=" + types[i] + "'>" + types[i] + "</a>";
+	}
+}
+
+function searchBox(){
+	window.location = '/search?term=' + document.getElementById("search_input").value;
 }

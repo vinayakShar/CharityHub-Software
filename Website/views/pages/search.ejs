@@ -2,12 +2,12 @@
 <html>
 
 <head>
-	<title>CharityHub</title>
+	<title>CharityHub - <%= term %></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="/scripts/charityDetails.js"></script>
 </head>
 
-<body onload="getHome('<%= JSON.stringify(charities) %>','<%= JSON.stringify(events) %>')">
+<body onload="getSearch('<%= JSON.stringify(charities) %>')">
     
     <!-- navigation bar -->
     <%- include('../partials/nav.ejs', {bg: 0}) %>
@@ -48,28 +48,23 @@
     <!-- charity cards -->
 		<a type="button" class="btn btn-dark btn-lg" href="/add-charity" style="float: right;">Add a Charity</a>
 		<br>
-		<h3 id="title1"></h3>
+		<h3><%= term %></h3>
 		<div class="card-deck text-center" id="row1"></div>
 		<br>
-		<h3 id="title2"></h3>
 		<div class="card-deck text-center" id="row2"></div>
 		<br>
-		<div class="container bg-light border rounded border-dark" style="background-image: url('./img/head_bg00d.jpg'); background-size: cover;">
-			<br><h1 class="display-4 text-white text-center" style="text-shadow: -1px -1px 0 #000, 2px -1px 0 #000, -1px 2px 0 #000, 2px 2px 0 #000;">Upcoming Events</h1>
-			<div class="card-deck" id="events">
-			</div><br>
-		</div>
-		<br>
-		<h3 id="title3"></h3>
 		<div class="card-deck text-center" id="row3"></div>
 	</div>
 	<br>
 
-	<!-- type suggestions -->
-	<div class="container bg-light border rounded border-dark" style="background-image: url('./img/head_bg00c.jpg'); background-size: cover;">
-		<br><h1 class="display-4 text-primary text-center" style="text-shadow: -1px -1px 0 #000, 2px -1px 0 #000, -1px 2px 0 #000, 2px 2px 0 #000;">View all charities for...</h1>
-		<div class="container text-center col-9" id="types">
-		</div><br>
+	<!-- page navigation -->
+	<div class="row">
+		<div class="col">
+			<br><button type="button" class="btn btn-dark btn-lg" disabled="true" onclick="" style="float: right;">Previous Page</button>
+		</div>
+		<div class="col">
+			<br><button type="button" class="btn btn-dark btn-lg" onclick="" style="float: left;">Next Page</button>
+		</div>
 	</div>
 	<br><br>
 
