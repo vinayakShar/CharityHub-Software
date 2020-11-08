@@ -7,7 +7,7 @@
 	<script src="/scripts/charityDetails.js"></script>
 </head>
 
-<body onload="getSearch('<%= JSON.stringify(charities) %>')">
+<body onload="getSearch('<%= JSON.stringify(charities) %>','<%= term %>',<%= page %>)">
     
     <!-- navigation bar -->
     <%- include('../partials/nav.ejs', {bg: 0}) %>
@@ -60,10 +60,10 @@
 	<!-- page navigation -->
 	<div class="row">
 		<div class="col">
-			<br><button type="button" class="btn btn-dark btn-lg" disabled="true" onclick="" style="float: right;">Previous Page</button>
+			<br><a type="button" id="prev_page" class="btn btn-dark btn-lg" style="float: right;">Previous Page</a>
 		</div>
 		<div class="col">
-			<br><button type="button" class="btn btn-dark btn-lg" onclick="" style="float: left;">Next Page</button>
+			<br><a type="button" id="next_page" class="btn btn-dark btn-lg" style="float: left;">Next Page</a>
 		</div>
 	</div>
 	<br><br>

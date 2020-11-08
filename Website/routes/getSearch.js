@@ -1,13 +1,16 @@
 const db = require('../db/access');
 
-// Obtains charity names and info about them, then
-// returns that info to the homepage to render
 function getCharityInfo(req, res, url, checkLoggedIn) 
 {
     const search = url.parse(req.url, true).query;
 
-    // Change `LIMIT 9` to different value if you want the frontend
-    // to have access to more charities
+    if (search.page) {
+        var offset = search.page * 3;
+    }
+    else{
+        var offset = 0;
+    }
+
     const charityInfoQuery = 
     `SELECT
         org_account.name, org_details.*
@@ -16,12 +19,19 @@ function getCharityInfo(req, res, url, checkLoggedIn)
     WHERE
         org_details.org_id = org_account.org_id
     AND
-        (org_details.type1 = '${search.term}'
+        (org_details.type1 ~ '${search.term}'
     OR
-        org_details.type2 = '${search.term}'
+        org_details.type2 ~ '${search.term}'
     OR
-        org_details.type3 = '${search.term}')
-    LIMIT 9;`;
+        org_details.type3 ~ '${search.term}'
+    OR
+        org_account.name ~ '${search.term}'
+    OR
+        org_details.tag ~ '${search.term}'
+    OR
+        org_details.mission ~ '${search.term}')
+    LIMIT 4
+    OFFSET ${offset};`;
 
     db.query(charityInfoQuery)
     .then(data => {
@@ -30,7 +40,8 @@ function getCharityInfo(req, res, url, checkLoggedIn)
             loggedIn: checkLoggedIn(req),
             failLoggedInMessage: req.flash('error'),
             charities: data.rows,
-            term: search.term
+            term: search.term,
+            page: search.page
         });
     })
     .catch(err => {

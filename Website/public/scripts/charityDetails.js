@@ -35,23 +35,36 @@ function viewCharity(num,charities,events,addresses){
 	cardCharity(2,3);
 }
 
-function getSearch(charities){
+function getSearch(charities,term,page){
 	charity = JSON.parse(charities);
+	if(page == null){page = 0};
 	if(charity[0]){
 		cardRow(0,"row1");
 		cardCharity(0,0);
 		cardCharity(1,1);
 		cardCharity(2,2);
-		cardRow(3,"row2");
-		cardCharity(3,3);
-		cardCharity(4,4);
-		cardCharity(5,5);
-		cardRow(6,"row3");
-		cardCharity(6,6);
-		cardCharity(7,7);
-		cardCharity(8,8);
+		//cardRow(3,"row2");
+		//cardCharity(3,3);
+		//cardCharity(4,4);
+		//cardCharity(5,5);
+		//cardRow(6,"row3");
+		//cardCharity(6,6);
+		//cardCharity(7,7);
+		//cardCharity(8,8);
 	}
 	else{document.getElementById("row1").innerHTML = '<p>There are no charities matching your search.</p>';}
+	if(page>0){
+		document.getElementById("prev_page").href = '/search?term=' + term + '&page=' + (page-1);
+	}
+	else{
+		document.getElementById("prev_page").style.display = "none";
+	}
+	if(charity[3]){
+		document.getElementById("next_page").href = '/search?term=' + term + '&page=' + (page+1);
+	}
+	else{
+		document.getElementById("next_page").style.display = "none";
+	}
 }
 
 function loadCharity(num){
