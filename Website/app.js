@@ -60,6 +60,13 @@ app.get('/view-charity', (req, res) => {
   renderCharity.loadCharity(req, res, url, checkLoggedIn);
 })
 
+// Add event route
+app.get('/add-event', (req, res) => {
+  res.render('pages/add-event.ejs', {
+    loggedIn: checkLoggedIn(req)
+  });
+});
+
 // When user registers, create new user in DB and redirect to home route
 app.post('/register', checkNotAuthenticated, function(req, res) {
   createUserRoute.createUser(req, res);

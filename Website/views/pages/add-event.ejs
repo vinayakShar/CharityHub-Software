@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Add an Event</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!--
+	<link rel="stylesheet" href="./styles/styles.css">
+	-->
+</head>
+
+<body>
+    <!-- navigation bar -->
+    <%- include('../partials/nav.ejs', {bg: 1}) %>
+
+	<!-- form -->
+	<div class="container">
+		<br><h1>Add an Event</h1><br>
+		<form>
+			<div class="form-row">
+				<div class="col">
+					<div class="form-group">
+						<label for="event_name">Event Name:</label>
+						<input type="text" class="form-control" id="event_name" placeholder="Name of the event" required>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label for="event_desc">Description:</label>
+						<input type="text" class="form-control" id="event_desc" placeholder="Short description of the event">
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+								<label for="event_date">Date:</label>
+								<input type="date" class="form-control" id="event_date" required>
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label for="event_time">Time: (optional)</label>
+								<input type="time" class="form-control" id="event_time">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a type="submit" class="btn btn-dark" style="float: right;">Submit</a>
+		</form>
+	</div>
+	<br><br>
+	
+</body>
+
+</html>
