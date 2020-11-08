@@ -14,7 +14,7 @@
 	-->
 </head>
 
-<body onload="viewCharity(new URLSearchParams(window.location.search).get('id'),'<%= JSON.stringify(charities) %>','<%= JSON.stringify(events) %>')">
+<body onload="viewCharity(new URLSearchParams(window.location.search).get('id'),'<%= JSON.stringify(charities) %>','<%= JSON.stringify(events) %>','<%= JSON.stringify(addresses) %>')">
 
     <!-- navigation bar -->
 	<%- include('../partials/nav.ejs', {bg: 1}) %>
@@ -34,6 +34,7 @@
 				</div>
 				<p style="text-align:center;">
 					<br><img id="charity_logo" src="data:," alt="" width="400">
+					<br><p class="font-weight-bold text-center" id="charity_tag"></p>
 				</p>
 			</div>
 			<div class="col">
@@ -49,7 +50,11 @@
 					<input type="text" class="form-control text-center" id="new_type2" placeholder="Add Another">
 					<input type="text" class="form-control text-center" id="new_type3" placeholder="Add Another">
 				</div>
-				<h3>Official Website:</h3>
+				<h3>Contact</h3>
+				<p id="charity_contact"></p>
+				<div id="edit_contact" style="display: none;">
+					<textarea class="form-control" id="new_contact" rows="3" placeholder="Official Business Address" required></textarea>
+				</div>
 				<div id = "links">
 				</div>
 				<div id="edit_links" style="display: none;">
@@ -58,14 +63,9 @@
 					<input type="url" class="form-control" id="new_url_tw" placeholder="Twitter URL">
 					<input type="url" class="form-control" id="new_url_in" placeholder="Instagram URL">
 				</div>
-				<h3>Contact:</h3>
-				<p id="charity_contact"></p>
-				<div id="edit_contact" style="display: none;">
-					<textarea class="form-control" id="new_contact" rows="3" placeholder="Official Business Address" required></textarea>
-				</div>
 			</div>
 			<div class="col-6">
-				<h3>Description</h3>
+				<h3>Mission</h3>
 				<p id="charity_desc"></p>
 				<textarea class="form-control" id="new_desc" rows="15" style="display: none;"></textarea>
 			</div>
@@ -75,7 +75,7 @@
 					<p>There are no upcoming events for this organization.</p>
 				</div>
 				<div class="container text-center">
-					<a type="button" class="btn btn-dark btn-sm" href="/add-event">Add an Event</a>
+					<a type="button" id="add_event" class="btn btn-dark btn-sm">Add an Event</a>
 				</div>
 				<div id="edit_events" style="display: none;">
 					<input type="text" class="form-control" id="new_event1" placeholder="Event Title">

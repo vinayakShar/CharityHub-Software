@@ -17,7 +17,9 @@ function getCharityInfo(req, res, url, checkLoggedIn)
 
     const charityID = url.parse(req.url, true).query;
 
-    var getEventsQuery = `SELECT * FROM event WHERE org_id = '${charityID.id}' ORDER BY event_date LIMIT 3;`;
+    const getEventsQuery = `SELECT * FROM event WHERE org_id = '${charityID.id}' ORDER BY event_date LIMIT 3;`;
+
+    const getAddressQuery = `SELECT address.* FROM address INNER JOIN org_details ON org_details.address_id = address.address_id WHERE org_id = '${charityID.id}';`;
 
     db.query(charityInfoQuery)
     .then(data => {
@@ -30,12 +32,21 @@ function getCharityInfo(req, res, url, checkLoggedIn)
         db.query(getEventsQuery)
         .then(eventData => {
             console.log(eventData);
-            res.render('pages/view-charity.ejs', {
-                loggedIn: checkLoggedIn(req),
-                failLoggedInMessage: req.flash('error'),
-                charities: data.rows,
-                events: eventData.rows
-            });
+            db.query(getAddressQuery)
+            .then(addressData => {
+                console.log(addressData);
+                res.render('pages/view-charity.ejs', {
+                    loggedIn: checkLoggedIn(req),
+                    failLoggedInMessage: req.flash('error'),
+                    charities: data.rows,
+                    events: eventData.rows,
+                    addresses: addressData.rows[0]
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).send("Error code 500: Internal server error");
+            })
         })
         .catch(err => {
             console.log(err);

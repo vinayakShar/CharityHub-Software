@@ -1,8 +1,9 @@
 var charity = '';
 var event = '';
+var address = '';
 
-function getHome(orgs,events){
-	charity = JSON.parse(orgs);
+function getHome(charities,events){
+	charity = JSON.parse(charities);
 	event = JSON.parse(events);
 	document.getElementById("title1").innerHTML = "Featured";
 	cardRow(0,"row1");
@@ -16,15 +17,16 @@ function getHome(orgs,events){
 	cardCharity(5,5);
 	document.getElementById("title3").innerHTML = "Recommended For You";
 	cardRow(6,"row3");
-	cardCharity(6,2);
-	cardCharity(7,0);
-	cardCharity(8,1);
+	cardCharity(6,6);
+	cardCharity(7,7);
+	cardCharity(8,8);
 	homeEvents();
 }
 
-function viewCharity(num,orgs,events){
-	charity = JSON.parse(orgs);
+function viewCharity(num,charities,events,addresses){
+	charity = JSON.parse(charities);
 	event = JSON.parse(events);
+	address = JSON.parse(addresses);
 	loadCharity(num);
 	cardRow(0,"similar");
 	cardCharity(0,1);
@@ -38,27 +40,34 @@ function loadCharity(num){
 	document.getElementById("charity_brand").innerHTML = charity[num].name;
 	document.getElementById("charity_logo").src = './img/charity/' + charity[num].org_id + 'L.png';
 	document.getElementById("charity_logo").alt = charity[num].name;
+	document.getElementById("charity_tag").innerHTML = charity[num].tag;
 
 	// Charity Type List
-	document.getElementById("types").innerHTML = "<a type='button' id='type1' class='btn btn-primary btn-sm' href='#'>" + charity[num].type1 + "</a>"
+	document.getElementById("types").innerHTML = "<a type='button' id='type1' class='btn btn-dark btn-sm my-1' href='#'>" + charity[num].type1 + "</a>"
 	if( charity[num].type2 !== "" )
-		document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + " <a type='button' id='type2' class='btn btn-primary btn-sm' href='#'>" + charity[num].type2 + "</a>"
+		document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + " <a type='button' id='type2' class='btn btn-dark btn-sm my-1' href='#'>" + charity[num].type2 + "</a>"
 	if( charity[num].type3 !== "" )
-		document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + " <a type='button' id='type2' class='btn btn-primary btn-sm' href='#'>" + charity[num].type3 + "</a>"
+		document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + " <a type='button' id='type2' class='btn btn-dark btn-sm my-1' href='#'>" + charity[num].type3 + "</a>"
 	document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + "<br><br>";
 
+	// Address
+	document.getElementById("charity_contact").innerHTML = address.address + '<br>';
+	if(address.address2){
+		document.getElementById("charity_contact").innerHTML = document.getElementById("charity_contact").innerHTML + address.address2 + '<br>';
+	}
+	document.getElementById("charity_contact").innerHTML = document.getElementById("charity_contact").innerHTML + address.district + ' ' + address.postal_code + '<br>' + address.phone;
+
 	// Website & Social Media Links
-	document.getElementById("links").innerHTML = "<a type='button' id='charity_url' class='btn btn-dark btn-sm' href='" + charity[num].url + "'>" + charity[num].name + "</a>";
+	document.getElementById("links").innerHTML = "<a type='button' id='charity_url' class='btn btn-dark btn-sm' href='" + charity[num].url + "'>Official Website</a>";
 	if( charity[num].url_fb !== "" )
-		document.getElementById("links").innerHTML = document.getElementById("links").innerHTML + " <i class='fa fa-facebook-official fa-2x' href='" + charity[num].url_fb + "' style='vertical-align:bottom;'></i>"
+		document.getElementById("links").innerHTML = document.getElementById("links").innerHTML + " <a class='fa fa-facebook-official fa-2x' href='" + charity[num].url_fb + "' style='vertical-align:bottom; color: #343a40; text-decoration: none;'></a>"
 	if( charity[num].url_tw !== "" )
-		document.getElementById("links").innerHTML = document.getElementById("links").innerHTML + " <i class='fa fa-twitter fa-2x' href='" + charity[num].url_fb + "' style='vertical-align:bottom;'></i>"
+		document.getElementById("links").innerHTML = document.getElementById("links").innerHTML + " <a class='fa fa-twitter fa-2x' href='" + charity[num].url_tw + "' style='vertical-align:bottom; color: #343a40; text-decoration: none;'></a>"
 	if( charity[num].url_in !== "" )
-		document.getElementById("links").innerHTML = document.getElementById("links").innerHTML + " <i class='fa fa-instagram fa-2x' href='" + charity[num].url_fb + "' style='vertical-align:bottom;'></i>"
+		document.getElementById("links").innerHTML = document.getElementById("links").innerHTML + " <a class='fa fa-instagram fa-2x' href='" + charity[num].url_in + "' style='vertical-align:bottom; color: #343a40; text-decoration: none;'></a>"
 	document.getElementById("links").innerHTML = document.getElementById("links").innerHTML + "<br><br>";
 
-	// Contact & Description
-	document.getElementById("charity_contact").innerHTML = '1111 Engineering Drive<br>Boulder, CO 80309-0428';
+	// Mission
 	if( charity[num].mission !== "" )
 		document.getElementById("charity_desc").innerHTML = charity[num].mission;
 	else
@@ -83,6 +92,7 @@ function loadCharity(num){
 			"<button type='button' class='btn btn-info' href='#'>" + event[2].title + 
 			"</button><p>" + eventDate.substring(4, 10) + "," + eventDate.substring(10, 15) + "</p>";
 	}
+	document.getElementById("add_event").href = '/add-event?id=' + charity[num].org_id;
 
 	// Photo
 	document.getElementById("photo").src = './img/charity/' + charity[num].org_id + '.jpg';
@@ -111,11 +121,11 @@ function cardRow(icard,location){
 	var box = document.getElementById(location);
 	for ( let i = 0 ; i<3 ; i++ ) {
 		box.innerHTML = box.innerHTML
-			+ "<div class='card border-dark bg-light' style='width: 18rem;'><a class='text-dark' id='item_url"
+			+ "<div class='card border-dark bg-light' style='width: 18rem;'><a class='text-dark' style='text-decoration: none;' id='item_url"
 			+ (icard+i) + "'><h5 class='card-header' id='item_title"
 			+ (icard+i) + "'></h5><img class='card-img-top' id='item_photo"
-			+ (icard+i) + "' src='data:,'></a><div class='container'><p class='card-text' id='item_desc"
-			+ (icard+i) + "'></p><div class='container border border-light' id='item_types"
+			+ (icard+i) + "' src='data:,'></a><div class='container'><span class='card-text' id='item_desc"
+			+ (icard+i) + "'></span><div class='container border border-light' id='item_types"
 			+ (icard+i) + "'></div></div></div>";
 	}
 }
@@ -125,11 +135,11 @@ function cardCharity(card,num){
 	document.getElementById("item_title" + card).innerHTML = charity[num].name;
 	document.getElementById("item_url" + card).href = "./view-charity?id=" + charity[num].org_id;
 	document.getElementById("item_desc" + card).innerHTML = charity[num].tag;
-	document.getElementById("item_types" + card).innerHTML = "<a type='button' class='btn btn-dark btn-sm' href='#'>" + charity[num].type1 + "</a>"
+	document.getElementById("item_types" + card).innerHTML = "<a type='button' class='btn btn-dark btn-sm my-1' href='#'>" + charity[num].type1 + "</a>"
 	if( charity[num].type2 !== "" )
-		document.getElementById("item_types" + card).innerHTML = document.getElementById("item_types" + card).innerHTML + " <a type='button' class='btn btn-dark btn-sm' href='#'>" + charity[num].type2 + "</a>"
+		document.getElementById("item_types" + card).innerHTML = document.getElementById("item_types" + card).innerHTML + " <a type='button' class='btn btn-dark btn-sm my-1' href='#'>" + charity[num].type2 + "</a>"
 	if( charity[num].type3 !== "" )
-		document.getElementById("item_types" + card).innerHTML = document.getElementById("item_types" + card).innerHTML + " <a type='button' class='btn btn-dark btn-sm' href='#'>" + charity[num].type3 + "</a>"
+		document.getElementById("item_types" + card).innerHTML = document.getElementById("item_types" + card).innerHTML + " <a type='button' class='btn btn-dark btn-sm my-1' href='#'>" + charity[num].type3 + "</a>"
 }
 
 function homeEvents(){
@@ -139,7 +149,7 @@ function homeEvents(){
 		else{var eventDesc = '';}
 		document.getElementById("events").innerHTML = document.getElementById("events").innerHTML + 
 			"<div class='card rounded border-dark text-center'>" + 
-				"<a href='./view-charity?id=" + event[i].org_id + "'>" + 
+				"<a href='./view-charity?id=" + event[i].org_id + "' style='text-decoration: none;'>" + 
 					"<h5 class='card-header bg-danger text-light'>" + 
 						event[i].title + 
 					"</h5>" + 

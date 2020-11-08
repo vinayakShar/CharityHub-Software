@@ -180,58 +180,91 @@ INSERT INTO public.org_account (org_id, name, category_id, create_date, email, p
 VALUES(0, 'CharityHub', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(1, 'Pet Adoption', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+VALUES(1, 'World Resources Institute', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(2, 'Homeless Assistance', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+VALUES(2, 'Doctors Without Borders', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(3, 'Disaster Relief', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+VALUES(3, 'The Rotary Foundation', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(4, 'Food Bank', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+VALUES(4, 'Pet Adoption', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(5, 'Global Education', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+VALUES(5, 'Homeless Assistance', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+
+INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(6, 'Disaster Relief', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+
+INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(7, 'Food Bank', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+
+INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(8, 'Global Education', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 
 -- Details INSERT
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(0, 'Connecting people to charity.', 'Create a secure marketplace for charitable fundraising that puts the power of change in the hands of the people.', 'Support', '', '', '#', '#', '#', '#', 1);
+VALUES(0, 'Connecting people to charity', 'Create a secure marketplace for charitable fundraising that puts the power of change in the hands of the people.', 'Support', 'International', 'Volunteering', '#', '', '', '', 0);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(1, 'Finding forever homes for dogs, cats, & all pets.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Animals', 'Local', '', '#', '', '', '', 1);
+VALUES(1, 'Working at the intersection of environment & human needs', 'Founded in 1982, World Resources Institute (WRI) is a global research organization that spans more than 50 countries, with offices in the United States, China, India, Brazil, Indonesia and more. WRIs mission is to move human society to live in ways that protect Earths environment and its capacity to provide for the needs and aspirations of current and future generations. WRIs more than 450 experts and staff work closely with leaders to turn big ideas into action to sustain our natural resources-the foundation of economic opportunity and human well-being. Our work focuses on six critical issues at the intersection of environment and development: climate, energy, food, forests, water, and cities and transport.', 'Conservation', 'Environment', 'International', 'https://www.wri.org/', 'https://www.facebook.com/worldresources/', 'https://twitter.com/WorldResources', 'https://www.instagram.com/worldresources', 1);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(2, 'Assisting the most vulnerable members of our community.', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Homeless', 'Local', '', '#', '', '', '', 1);
+VALUES(2, 'Providing emergency medical care', 'Doctors Without Borders, USA (DWB-USA) was founded in 1990 in New York City to raise funds, create awareness, recruit field staff, and advocate with the United Nations and US government on humanitarian concerns. Doctors Without Borders/Médecins Sans Frontières (MSF) is an international medical humanitarian organization that provides aid in nearly 60 countries to people whose survival is threatened by violence, neglect, or catastrophe, primarily due to armed conflict, epidemics, malnutrition, exclusion from health care, or natural disasters.', 'International', 'Health', 'Disaster Relief', 'http://www.doctorswithoutborders.org/', 'https://www.facebook.com/msf.english', 'https://www.twitter.com/MSF_USA', 'https://www.instagram.com/doctorswithoutborders', 2);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(3, 'Providing critical support for those affected by disaster.', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 'International', 'Disaster Relief', 'Volunteering', '#', '', '', '', 1);
+VALUES(3, 'Enabling Rotarians to advance world understanding, goodwill, and peace', 'The Rotary Foundations mission is to advance world understanding, goodwill, and peace. Rotary Foundation grants promote peace, fight disease, provide clean water and sanitation, sustain mothers and children, improve education, and strengthen local economies. The Foundation is a worldwide leader in the efforts to eradicate polio through its partnership in the Global Polio Eradication Initiative (GPEI). Since 1988, Rotary and its partners in the GPEI have immunized over 3 billion children, reducing the incidence of polio by 99.9 percent and eradicating it from all but two countries. Rotary has contributed more than $2.1 billion and thousands of volunteer hours to eradication efforts. The Foundation also funds training of peacemakers through the Rotary Peace Center program. Most recently, Rotarys Disaster Response Grants are making it possible for Rotary members to respond effectively to local recovery efforts as they unfold, and COVID-19 was recently added as an eligible activity.', 'International', 'Health', 'Education', 'https://www.rotary.org/en/about-rotary/rotary-foundation', 'https://www.facebook.com/rotary', 'https://twitter.com/rotary', 'http://instagram.com/rotaryinternational', 3);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(4, 'Food for all those in our community who need it.', 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Local', 'Volunteering', '', '#', '', '', '', 1);
+VALUES(4, 'Finding forever homes for dogs, cats, & all pets', '', 'Animals', 'Local', 'Volunteering', '#', '', '', '', 0);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(5, 'Assisting all children in reaching their goals & their dreams.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'International', 'Education', 'Children', '#', '', '', '', 1);
+VALUES(5, 'Assisting the most vulnerable members of our community', '', 'Homeless', 'Local', 'Volunteering', '#', '', '', '', 0);
+
+INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
+VALUES(6, 'Providing critical support for those affected by disaster', '', 'International', 'Disaster Relief', 'Volunteering', '#', '', '', '', 0);
+
+INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
+VALUES(7, 'Food for all those in our community who need it', '', 'Local', 'Volunteering', 'Health', '#', '', '', '', 0);
+
+INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
+VALUES(8, 'Assisting all children in reaching their goals & their dreams', '', 'International', 'Education', 'Children', '#', '', '', '', 0);
+
+
+-- Address INSERT
+
+INSERT INTO public.address (address_id, address, district, city_id, postal_code, phone)
+VALUES(0, '1111 Engineering Drive', 'Boulder, CO', 0, '80309-0428', '(303) 867-5309');
+
+INSERT INTO public.address (address_id, address, address2, district, city_id, postal_code, phone)
+VALUES(1, '10 G Street, NE', 'Suite 800', 'Washington, DC', 0, '20002', '(202) 729-7600');
+
+INSERT INTO public.address (address_id, address, address2, district, city_id, postal_code, phone)
+VALUES(2, '40 Rector Street', '16th Floor', 'New York, NY', 0, '10006', '(212) 679-6800');
+
+INSERT INTO public.address (address_id, address, address2, district, city_id, postal_code, phone)
+VALUES(3, 'One Rotary Center', '1560 Sherman Avenue', 'Evanston, IL', 0, '60201', '(866) 976-8279');
 
 
 -- Event INSERT
 
 INSERT INTO public.event (event_id, title, event_date, org_id, description)
-VALUES(0, 'Launch Event', '2020-11-30', 0, 'The public launch of CharityHub');
+VALUES(0, 'Launch Party', '2020-11-30', 0, 'The public launch of CharityHub');
 
-INSERT INTO public.event (event_id, title, event_date, org_id)
-VALUES(1, 'Milestone 6', '2020-12-04', 0);
-
-INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
-VALUES(2, 'Final Exam', '2020-12-10', '13:30:00', 0, 'Final Exam for CSCI 3308');
-
-INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
-VALUES(3, 'Puppy Event', '2020-12-06', '11:30:00', 1, 'Hurray puppies!');
+INSERT INTO public.event (event_id, title, event_date, org_id, description)
+VALUES(1, 'Presentation', '2020-12-02', 0, 'Project Presentation for CharityHub');
 
 INSERT INTO public.event (event_id, title, event_date, event_time, org_id)
-VALUES(4, 'Food Drive', '2020-12-02', '16:30:00', 4);
+VALUES(2, 'Final Exam', '2020-12-10', '13:30:00', 0);
+
+INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
+VALUES(3, 'Puppy Event', '2020-12-06', '11:30:00', 4, 'Adorable puppies for adoption!');
+
+INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
+VALUES(4, 'Food Drive', '2020-12-01', '16:30:00', 7, 'Collecting food donations all day');
 
 
 
