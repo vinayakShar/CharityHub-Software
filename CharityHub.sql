@@ -275,11 +275,8 @@ VALUES(1, 'Presentation', '2020-12-02', 0, 'Project Presentation for CharityHub'
 INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
 VALUES(2, 'Final Exam', '2020-12-10', '13:30:00', 0, 'Review on Dec 7th');
 
-INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
-VALUES(3, 'Fund Run', '2020-12-06', '11:30:00', 6, 'Virtual Race');
-
 INSERT INTO public.event (event_id, title, event_date, org_id, description)
-VALUES(4, 'Gives Day', '2020-12-08', 6, 'Celebrate philanthropy');
+VALUES(3, 'Colorado Gives Day', '2020-12-08', 6, 'Annual movement to celebrate & increase philanthropy');
 
 
 

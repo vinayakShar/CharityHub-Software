@@ -179,29 +179,27 @@ function cardCharity(card,num){
 }
 
 function homeEvents(){
-	for ( let i = 0 ; i < 5 ; i++ ) {
+	for ( let i = 0 ; i < 4 ; i++ ) {
 		var eventDate = new Date(event[i].event_date).toDateString();
 		if(event[i].description) {var eventDesc = event[i].description;}
 		else{var eventDesc = '';}
 		document.getElementById("events").innerHTML = document.getElementById("events").innerHTML + 
 			"<div class='card rounded border-dark text-center'>" + 
 				"<a href='./view-charity?id=" + event[i].org_id + "' style='text-decoration: none;'>" + 
-					"<h5 class='card-header bg-danger text-light'>" + 
+					"<p class='card-header bg-danger text-light font-weight-bold'>" + 
 						event[i].title + 
-					"</h5>" + 
+					"</p>" + 
 				"</a>" + 
-				"<div class='card-body'>" + 
-					"<span class='card-text'>" + 
-						 eventDesc + 
-					"</span>" + 
+					"<a href='./view-charity?id=" + event[i].org_id + "' class='text-dark' style='text-decoration:none;'>" + 
+						charity[event[i].org_id].name + "</a>" + 
 					"<br>" + 
 					"<span class='card-text font-weight-bold'>" + 
 						eventDate.substring(4, 10) + "," + eventDate.substring(10, 15) + 
 					"</span>" + 
-				"</div>" + 
-				"<a type='button' class='btn btn-secondary' href='./view-charity?id=" + event[i].org_id + "'>" + 
-					charity[event[i].org_id].name + 
-				"</a>" + 
+					"<br>" + 
+					"<span class='card-text'>" + 
+						 eventDesc + 
+					"</span>" + 
 			"</div>";
 	}
 }
