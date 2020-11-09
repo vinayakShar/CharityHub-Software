@@ -233,7 +233,7 @@ function homeEvents(){
 						event[i].title + 
 					"</p>" + 
 				"</a>" + 
-					"<a href='./view-charity?id=" + event[i].org_id + "' class='text-dark' style='text-decoration:none;'>" + 
+					"<a href='./view-charity?id=" + event[i].org_id + "' class='text-dark font-italic' style='text-decoration:none;'>" + 
 						charity[event[i].org_id].name + "</a>" + 
 					"<br>" + 
 					"<span class='card-text font-weight-bold'>" + 
