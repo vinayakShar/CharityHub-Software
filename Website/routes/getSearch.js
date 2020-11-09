@@ -35,7 +35,6 @@ function getCharityInfo(req, res, url, checkLoggedIn)
 
     db.query(charityInfoQuery)
     .then(data => {
-        console.log(data.rows);
         res.render('pages/search.ejs', {
             loggedIn: checkLoggedIn(req),
             failLoggedInMessage: req.flash('error'),

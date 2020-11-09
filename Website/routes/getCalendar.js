@@ -1,11 +1,7 @@
 const db = require('../db/access');
 
-// Obtains charity names and info about them, then
-// returns that info to the homepage to render
 function getCharityInfo(req, res, checkLoggedIn) 
 {
-    // Change `LIMIT 9` to different value if you want the frontend
-    // to have access to more charities
     const charityInfoQuery = 
     `SELECT
         org_account.name, org_details.*
@@ -14,20 +10,13 @@ function getCharityInfo(req, res, checkLoggedIn)
     WHERE
         org_details.org_id = org_account.org_id;`;
 
-    var getEventsQuery = `SELECT * FROM event ORDER BY event_date LIMIT 10;`;
+    var getEventsQuery = `SELECT * FROM event ORDER BY event_date;`;
 
     db.query(charityInfoQuery)
     .then(data => {
-        console.log(data.rows);
-        // res.render('pages/home.ejs', {
-        //     loggedIn: checkLoggedIn(req),
-        //     failLoggedInMessage: req.flash('error'),
-        //     charities: data.rows
-        // });
         db.query(getEventsQuery)
         .then(eventData => {
-            console.log(eventData);
-            res.render('pages/home.ejs', {
+            res.render('pages/calendar.ejs', {
                 loggedIn: checkLoggedIn(req),
                 failLoggedInMessage: req.flash('error'),
                 charities: data.rows,
@@ -46,5 +35,5 @@ function getCharityInfo(req, res, checkLoggedIn)
 }
 
 module.exports = {
-    loadHomepage: (req, res, checkLoggedIn) => { getCharityInfo(req, res, checkLoggedIn) }
+    loadCalendar: (req, res, checkLoggedIn) => { getCharityInfo(req, res, checkLoggedIn) }
 }

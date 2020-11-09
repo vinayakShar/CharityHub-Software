@@ -12,8 +12,7 @@ function getCharityInfo(req, res, url, checkLoggedIn)
     FROM
         org_account, org_details
     WHERE
-        org_details.org_id = org_account.org_id
-    LIMIT 9;`;
+        org_details.org_id = org_account.org_id;`;
 
     const charityID = url.parse(req.url, true).query;
 

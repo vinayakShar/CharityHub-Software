@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CharityHub Calendar</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="/scripts/charityDetails.js"></script>
+</head>
+
+<body onload="getCalendar('<%= JSON.stringify(charities) %>','<%= JSON.stringify(events) %>')">
+    
+    <!-- navigation bar -->
+    <%- include('../partials/nav.ejs', {bg: '0d'}) %>
+	
+    <% // if(messages.error) { %>
+	<%// = messages.error %>
+	<%//  } %>
+
+	<% if(failLoggedInMessage.length > 0) { %>
+		<div class="container alert alert-danger" role="alert" style="text-align: center">
+			<%= failLoggedInMessage %>
+		</div>
+	<% } %>
+
+	<br>
+    <!-- event cards -->
+	<div class="container" id="events_calendar">
+	</div>
+	<br>
+
+</body>
+
+</html>

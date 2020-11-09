@@ -17,6 +17,7 @@ const initializePassport = require('./routes/loginUser/passport-config');
 const renderHomepage = require('./routes/getCharities');
 const renderCharity = require('./routes/getCharity');
 const renderSearch = require('./routes/getSearch');
+const renderCalendar = require('./routes/getCalendar');
 const { render } = require('ejs');
 const url = require('url');
 initializePassport(passport);
@@ -71,6 +72,11 @@ app.get('/add-event', (req, res) => {
 // Search route
 app.get('/search', (req, res) => {
   renderSearch.loadSearch(req, res, url, checkLoggedIn);
+})
+
+// Calendar route
+app.get('/calendar', (req, res) => {
+  renderCalendar.loadCalendar(req, res, checkLoggedIn);
 })
 
 // When user registers, create new user in DB and redirect to home route

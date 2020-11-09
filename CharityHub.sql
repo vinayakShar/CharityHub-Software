@@ -203,6 +203,9 @@ VALUES(7, 'Community Food Share', 9, '2020-11-03', 'ch@charityhub.org', 'test', 
 INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
 VALUES(8, 'International Childrens Fund', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
+INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(9, 'Conservation International', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+
 
 -- Details INSERT
 
@@ -210,7 +213,7 @@ INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, 
 VALUES(0, 'Connecting people to charity', 'Create a secure marketplace for charitable fundraising that puts the power of change in the hands of the people.', 'Support', 'International', '', '#', '', '', '', 0);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
-VALUES(1, 'Working at the intersection of environment & human needs', 'Founded in 1982, World Resources Institute (WRI) is a global research organization that spans more than 50 countries, with offices in the United States, China, India, Brazil, Indonesia and more. WRIs mission is to move human society to live in ways that protect Earths environment and its capacity to provide for the needs and aspirations of current and future generations. WRIs more than 450 experts and staff work closely with leaders to turn big ideas into action to sustain our natural resources-the foundation of economic opportunity and human well-being. Our work focuses on six critical issues at the intersection of environment and development: climate, energy, food, forests, water, and cities and transport.', 'Conservation', 'International', '', 'https://www.wri.org/', 'https://www.facebook.com/worldresources/', 'https://twitter.com/WorldResources', 'https://www.instagram.com/worldresources', 1);
+VALUES(1, 'Working at the intersection of environment & human needs', 'Founded in 1982, World Resources Institute (WRI) is a global research organization that spans more than 50 countries, with offices in the United States, China, India, Brazil, Indonesia and more. WRIs mission is to move human society to live in ways that protect Earths environment and its capacity to provide for the needs and aspirations of current and future generations. WRIs more than 450 experts and staff work closely with leaders to turn big ideas into action to sustain our natural resources-the foundation of economic opportunity and human well-being. Our work focuses on six critical issues at the intersection of environment and development: climate, energy, food, forests, water, and cities and transport.', 'Conservation', 'International', 'Environment', 'https://www.wri.org/', 'https://www.facebook.com/worldresources/', 'https://twitter.com/WorldResources', 'https://www.instagram.com/worldresources', 1);
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
 VALUES(2, 'Providing emergency medical care', 'Doctors Without Borders, USA (DWB-USA) was founded in 1990 in New York City to raise funds, create awareness, recruit field staff, and advocate with the United Nations and US government on humanitarian concerns. Doctors Without Borders/Médecins Sans Frontières (MSF) is an international medical humanitarian organization that provides aid in nearly 60 countries to people whose survival is threatened by violence, neglect, or catastrophe, primarily due to armed conflict, epidemics, malnutrition, exclusion from health care, or natural disasters.', 'International', 'Health', 'Disaster Relief', 'http://www.doctorswithoutborders.org/', 'https://www.facebook.com/msf.english', 'https://www.twitter.com/MSF_USA', 'https://www.instagram.com/doctorswithoutborders', 2);
@@ -232,6 +235,9 @@ VALUES(7, 'More than a food bank', 'At Community Food Share, we are more than a 
 
 INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
 VALUES(8, 'Bridging the gap from your hands to theirs', 'The International Childrens Fund (ICF) has come to the aid of needy children worldwide since 1978. We have helped distribute life-saving food, clothing, and medicine across the African continent. We have also supported the construction of orphanages, churches, schools and vocational training centers, drilled water wells to provide safe drinking water, and established agricultural projects. Practical, direct grassroots action is the main focus of ICF. We channel the Christian concern of Americans into street-level impact in African villages, where logistics often frustrate traditional relief efforts. The secret ingredient is a trustworthy network of local, native missionary partners, who personally shepherd gifts of food, clothing, medicine, equipment, and funds to the places children need them most.', 'International', 'Health', 'Children', 'https://www.icfaid.com/', 'https://www.facebook.com/ICFaid/', '', '', 8);
+
+INSERT INTO public.org_details (org_id, tag, mission, type1, type2, type3, url, url_fb, url_tw, url_in, address_id)
+VALUES(9, 'People need nature to thrive', 'Conservation International (CI) applies innovations in science, economics, policy and community participation to protect the Earths richest regions of plant and animal diversity and demonstrate that human societies can live harmoniously with nature. Founded in 1987, CI works in more than 40 countries on four continents to help people find economic alternatives without harming their natural environments. Building upon a strong foundation of science, partnership and field demonstration, CI empowers societies to responsibly and sustainably care for nature for the well-being of humanity. Conservation International is committed to helping societies adopt a more sustainable approach to development - one that considers and values nature at every turn.', 'International', 'Conservation', 'Environment', 'https://www.conservation.org/', 'https://www.facebook.com/conservation.intl', 'https://twitter.com/ConservationOrg', 'https://www.instagram.com/conservationorg/', 9);
 
 
 -- Address INSERT
@@ -261,7 +267,10 @@ INSERT INTO public.address (address_id, address, district, city_id, postal_code,
 VALUES(7, '650 S. Taylor Avenue', 'Louisville, CO', 0, '80027', '(303) 652-3663');
 
 INSERT INTO public.address (address_id, address, address2, district, city_id, postal_code, phone)
-VALUES(8, 'P.O. Box 583', ' 619 Main Street', 'Neenah, WI', 0, '54957', '(920) 729-5721');
+VALUES(8, 'P.O. Box 583', '619 Main Street', 'Neenah, WI', 0, '54957', '(920) 729-5721');
+
+INSERT INTO public.address (address_id, address, address2, district, city_id, postal_code, phone)
+VALUES(9, '2011 Crystal Drive', 'Suite 600', 'Arlington, VA', 0, '22202', '(800) 429-5660');
 
 
 -- Event INSERT
@@ -270,13 +279,22 @@ INSERT INTO public.event (event_id, title, event_date, org_id, description)
 VALUES(0, 'Launch Party', '2020-11-30', 0, 'The public launch of CharityHub');
 
 INSERT INTO public.event (event_id, title, event_date, org_id, description)
-VALUES(1, 'Presentation', '2020-12-02', 0, 'Project Presentation for CharityHub');
+VALUES(1, 'Presentation', '2020-12-02', 0, 'Project presentation for CharityHub');
 
 INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
-VALUES(2, 'Final Exam', '2020-12-10', '13:30:00', 0, 'Review on Dec 7th');
+VALUES(2, 'Fundraising Event', '2020-12-01', '13:30:00', 8, 'Raising necessary funds to help all children in need');
 
 INSERT INTO public.event (event_id, title, event_date, org_id, description)
-VALUES(3, 'Colorado Gives Day', '2020-12-08', 6, 'Annual movement to celebrate & increase philanthropy');
+VALUES(3, 'Colorado Gives Day', '2020-12-08', 6, 'Annual, statewide movement to celebrate philanthropy');
+
+INSERT INTO public.event (event_id, title, event_date, org_id, description)
+VALUES(4, 'Food Drive', '2020-12-11', 7, 'Collecting food donations & more all day');
+
+INSERT INTO public.event (event_id, title, event_date, org_id, description)
+VALUES(5, 'Climate Awareness', '2020-12-09', 9, 'Virtual events throughout the day to raise awareness');
+
+INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
+VALUES(6, 'Community Event', '2020-12-10', '17:00:00', 0, 'Connect with local charities in our community');
 
 
 

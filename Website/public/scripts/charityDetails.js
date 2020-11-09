@@ -46,6 +46,44 @@ function getSearch(charities,term,page){
 	}
 }
 
+function getCalendar(charities,events){
+	charity = JSON.parse(charities);
+	event = JSON.parse(events);
+	document.getElementById("charity_brand").innerHTML = "Events Calendar";
+	for ( let i = 0 ; i < Math.ceil(event.length/4) ; i++ ) {
+		document.getElementById("events_calendar").innerHTML = document.getElementById("events_calendar").innerHTML + 
+			"<div class='card-deck text-center' id='row" + i + "'></div><br>";
+	}
+	for ( let i = 0 ; i < event.length ; i++ ) {
+		var eventDate = new Date(event[i].event_date).toDateString();
+		if(event[i].event_time) {var eventTime = event[i].event_time;}
+		else{var eventTime = '';}
+		if(event[i].description) {var eventDesc = event[i].description;}
+		else{var eventDesc = '';}
+		document.getElementById("row" + Math.floor(i/4)).innerHTML = document.getElementById("row" + Math.floor(i/4)).innerHTML + 
+			"<div class='card rounded border-dark text-center'>" + 
+				"<a href='./view-charity?id=" + event[i].org_id + "' style='text-decoration: none;'>" + 
+					"<p class='card-header bg-info text-light font-weight-bold'>" + 
+						event[i].title + 
+					"</p>" + 
+				"</a>" + 
+				"<a href='./view-charity?id=" + event[i].org_id + "' class='text-dark font-italic' style='text-decoration:none;'>" + charity[event[i].org_id].name + "</a>" + 
+				"<br>" + 
+				"<span class='card-text font-weight-bold'>" + 
+					eventDate.substring(4, 10) + "," + eventDate.substring(10, 15) + 
+				"</span>" + 
+				"<br>" + 
+				"<span class='card-text'>" + 
+					 eventDesc + 
+				"</span>" + 
+				// "<a type='button' class='btn btn-dark btn-sm'>Delete Event</a>" + 
+			"</div>";
+	}
+	for ( let i = 0 ; i < ( 4 - event.length % 4 ) ; i++ ) {
+		document.getElementById("row" + Math.floor(event.length/4)).innerHTML = document.getElementById("row" + Math.floor(event.length/4)).innerHTML + "<div class='card border-0'></div>";
+	}
+}
+
 function orderCards(num){
 	for ( i = 0 ; i < num ; i++ ) {
 		cardCharity(i,i);
@@ -161,6 +199,9 @@ function cardRow(icard,location){
 				+ (icard+i) + "'></span><div class='container border border-light' id='item_types"
 				+ (icard+i) + "'></div></div></div>";
 		}
+		else {
+			box.innerHTML = box.innerHTML + "<div class='card bg-transparent border-0'></div>";
+		}
 	}
 }
 
@@ -179,8 +220,10 @@ function cardCharity(card,num){
 }
 
 function homeEvents(){
-	for ( let i = 0 ; i < 4 ; i++ ) {
+	for ( let i = 0 ; i < Math.min(4,event.length) ; i++ ) {
 		var eventDate = new Date(event[i].event_date).toDateString();
+		if(event[i].event_time) {var eventTime = event[i].event_time;}
+		else{var eventTime = '';}
 		if(event[i].description) {var eventDesc = event[i].description;}
 		else{var eventDesc = '';}
 		document.getElementById("events").innerHTML = document.getElementById("events").innerHTML + 
@@ -202,10 +245,13 @@ function homeEvents(){
 					"</span>" + 
 			"</div>";
 	}
+	for ( let i = 0 ; i < ( 4 - event.length ) ; i++ ) {
+		document.getElementById("events").innerHTML = document.getElementById("events").innerHTML + "<div class='card bg-transparent border-0'></div>";
+	}
 }
 
 function homeTypes(){
-	var types = ['Volunteering', 'Health', 'Conservation', 'Disaster Relief', 'Food Bank', 'International', 'Animals', 'Local']
+	var types = ['Volunteering', 'Health', 'Conservation', 'Disaster Relief', 'Food Bank', 'International', 'Animals', 'Environment', 'Local']
 	for ( let i = 0 ; i < types.length ; i++ ) {
 		document.getElementById("types").innerHTML = document.getElementById("types").innerHTML + 
 		"<a type='button' class='btn btn-lg btn-dark my-1 mr-1' href='/search?term=" + types[i] + "'>" + types[i] + "</a>";
