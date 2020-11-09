@@ -1,4 +1,4 @@
-const db = require('../db/access');
+const db = require('../db/hero');
 const dateObj = new Date();
 
 // Obtains the current date, formatted correctly to insert into DB
