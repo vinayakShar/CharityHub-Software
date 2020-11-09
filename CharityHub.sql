@@ -296,6 +296,8 @@ VALUES(5, 'Climate Awareness', '2020-12-09', 9, 'Virtual events throughout the d
 INSERT INTO public.event (event_id, title, event_date, event_time, org_id, description)
 VALUES(6, 'Community Event', '2020-12-10', '17:00:00', 0, 'Connect with local charities in our community');
 
+INSERT INTO public.event (event_id, title, event_date, org_id, description)
+VALUES(7, 'Past Event', '2020-11-08', 8, 'Dummy event for past dates');
 
 
 -- City INSERT (600 Cities)

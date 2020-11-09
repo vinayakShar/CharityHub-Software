@@ -10,7 +10,7 @@ function getCharityInfo(req, res, checkLoggedIn)
     WHERE
         org_details.org_id = org_account.org_id;`;
 
-    var getEventsQuery = `SELECT * FROM event ORDER BY event_date;`;
+    var getEventsQuery = `SELECT * FROM event WHERE event_date >= CURRENT_DATE ORDER BY event_date;`;
 
     db.query(charityInfoQuery)
     .then(data => {

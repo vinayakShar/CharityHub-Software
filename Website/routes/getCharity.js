@@ -16,7 +16,7 @@ function getCharityInfo(req, res, url, checkLoggedIn)
 
     const charityID = url.parse(req.url, true).query;
 
-    const getEventsQuery = `SELECT * FROM event WHERE org_id = '${charityID.id}' ORDER BY event_date LIMIT 3;`;
+    const getEventsQuery = `SELECT * FROM event WHERE org_id = '${charityID.id}' AND event_date >= CURRENT_DATE ORDER BY event_date LIMIT 3;`;
 
     const getAddressQuery = `SELECT address.* FROM address INNER JOIN org_details ON org_details.address_id = address.address_id WHERE org_id = '${charityID.id}';`;
 
