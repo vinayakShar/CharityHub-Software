@@ -1,4 +1,4 @@
-const db = require('../db/access');
+const db = require('../db/hero');
 
 // Obtains charity names and info about them, then
 // returns that info to the homepage to render

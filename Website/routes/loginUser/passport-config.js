@@ -1,5 +1,5 @@
 const LocalStrategy = require('passport-local').Strategy;
-const db = require('../../db/access');
+const db = require('../../db/hero');
 // const loginUser = require('./loginUser');
 
 // Authenticates when a user logins to see if that account exists within the DB

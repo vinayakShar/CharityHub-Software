@@ -1,4 +1,4 @@
-const db = require('../db/access');
+const db = require('../db/hero');
 
 function getCharityInfo(req, res, url, checkLoggedIn) 
 {
