@@ -2,7 +2,6 @@
 -- Charityhub Database--
 --                    --
 
-
 --              --
 --TABLE CREATION--
 --              --
@@ -22,15 +21,15 @@ COMMENT ON TABLE public.address IS 'Addresses associated with user billing and C
 
 -- Charity Type Category Table
 
-CREATE TABLE public.category (
-    category_id integer NOT NULL,
-    type character varying(25) NOT NULL
-);
+--CREATE TABLE public.category (
+  --  category_id integer NOT NULL,
+    --type character varying(25) NOT NULL
+--);
 
-COMMENT ON COLUMN public.category.category_id IS 'This is an integer so algorithms can search/filter numerically
-Example:
-Animal Rescue equals the int "1"
-Homelessness equals the int "2" ';
+--COMMENT ON COLUMN public.category.category_id IS 'This is an integer so algorithms can search/filter numerically
+--Example:
+--Animal Rescue equals the int "1"
+--Homelessness equals the int "2" ';
 
 
 -- City Table
@@ -48,12 +47,28 @@ CREATE TABLE public.country (
     country character varying(50) NOT NULL
 );
 
+
+-- User Account Table
+
+CREATE TABLE public.user_account (
+    account_id integer NOT NULL,
+    first_name character varying(45) NOT NULL,
+    last_name character varying(45) NOT NULL,
+    email character varying(50) NOT NULL,
+    address_id smallint NOT NULL,
+    create_date date NOT NULL,
+    last_update timestamp without time zone DEFAULT now() NOT NULL,
+    active integer NOT NULL,
+    password character varying NOT NULL,
+    username character varying(20) NOT NULL
+);
+
 -- Charity Accounts Table
 
 CREATE TABLE public.org_account (
     org_id integer NOT NULL,
     name character varying(100) NOT NULL,
-    category_id integer NOT NULL,
+--  category_id integer NOT NULL,
     create_date date NOT NULL,
     email character varying NOT NULL,
     password character varying NOT NULL,
@@ -84,10 +99,23 @@ CREATE TABLE public.org_details (
 );
 
 
+
+-- Payment Table
+
+CREATE TABLE public.payment (
+    transaction_id integer NOT NULL,
+    payment_id integer NOT NULL,
+    account_id integer NOT NULL,
+    amount numeric(5,2) NOT NULL,
+    payment_date timestamp without time zone DEFAULT now() NOT NULL,
+    type integer NOT NULL
+);
+
+
 -- Event Table
 
 CREATE TABLE public.event (
-	event_id integer NOT NULL,
+  	event_id integer NOT NULL,
     title text NOT NULL,
     event_date date NOT NULL,
     event_time time,
@@ -96,30 +124,8 @@ CREATE TABLE public.event (
 );
 
 
--- User Account Table
 
-CREATE TABLE public.user_account (
-    account_id integer NOT NULL,
-    first_name character varying(45) NOT NULL,
-    last_name character varying(45) NOT NULL,
-    email character varying(50) NOT NULL,
-    address_id smallint NOT NULL,
-    create_date date NOT NULL,
-    last_update timestamp without time zone DEFAULT now() NOT NULL,
-    active integer NOT NULL,
-    password character varying NOT NULL,
-    username character varying(20) NOT NULL
-);
 
--- Payment Table
-
-CREATE TABLE public.payment (
-    transaction_id integer NOT NULL,
-    payment_id integer NOT NULL,
-    account_id smallint NOT NULL,
-    amount numeric(5,2) NOT NULL,
-    payment_date timestamp without time zone DEFAULT now() NOT NULL
-);
 
 
 --       --
@@ -131,32 +137,32 @@ CREATE TABLE public.payment (
 
 -- Category INSERT
 
-INSERT INTO public.category (category_id, type) VALUES(1, 'Disaster');
-INSERT INTO public.category (category_id, type) VALUES(2, 'Animal Rescue');
-INSERT INTO public.category (category_id, type) VALUES(3, 'Environmental');
-INSERT INTO public.category (category_id, type) VALUES(4, 'Healthcare');
-INSERT INTO public.category (category_id, type) VALUES(5, 'Education');
-INSERT INTO public.category (category_id, type) VALUES(6, 'Arts');
-INSERT INTO public.category (category_id, type) VALUES(7, 'Hunger');
-INSERT INTO public.category (category_id, type) VALUES(8, 'Housing');
-INSERT INTO public.category (category_id, type) VALUES(9, 'International');
-INSERT INTO public.category (category_id, type) VALUES(10, 'The Rent is Too Damn High');
-INSERT INTO public.category (category_id, type) VALUES(11, 'iPhone For Jacob');
+--INSERT INTO public.category (category_id, type) VALUES(1, 'Disaster');
+--INSERT INTO public.category (category_id, type) VALUES(2, 'Animal Rescue');
+--INSERT INTO public.category (category_id, type) VALUES(3, 'Environmental');
+--INSERT INTO public.category (category_id, type) VALUES(4, 'Healthcare');
+--INSERT INTO public.category (category_id, type) VALUES(5, 'Education');
+--INSERT INTO public.category (category_id, type) VALUES(6, 'Arts');
+--INSERT INTO public.category (category_id, type) VALUES(7, 'Hunger');
+--INSERT INTO public.category (category_id, type) VALUES(8, 'Housing');
+--INSERT INTO public.category (category_id, type) VALUES(9, 'International');
+--INSERT INTO public.category (category_id, type) VALUES(10, 'The Rent is Too Damn High');
+--INSERT INTO public.category (category_id, type) VALUES(11, 'iPhone For Jacob');
 
 
 -- Payment INSERT
 
-INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id)
-VALUES(1, 1, 100, '2020-04-20 16:20:00', 1);
+INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
+VALUES(1, 1, 100, '2020-04-20 16:20:00', 1, 1);
 
-INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id)
-VALUES(2, 2, 200, '2020-04-20 16:20:00', 2);
+INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
+VALUES(2, 2, 200, '2020-04-20 16:20:00', 2, 1);
 
-INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id)
-VALUES(3, 3, 300, '2020-04-20 16:20:00', 3);
+INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
+VALUES(3, 3, 300, '2020-04-20 16:20:00', 3, 1);
 
-INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id)
-VALUES(4, 4, 400, '2020-04-20 16:20:00', 4);
+INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
+VALUES(4, 4, 400, '2020-04-20 16:20:00', 4, 1);
 
 
 -- User INSERT
@@ -176,35 +182,35 @@ VALUES (4, 'Matt', 'NA', 'test4@test.com', 1, '2020-10-12', '2020-10-12 15:19:07
 
 -- Charitiy INSERT
 
-INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(0, 'CharityHub', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+INSERT INTO public.org_account (org_id, name, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(0, 'CharityHub', '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
-INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(1, 'World Resources Institute', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+INSERT INTO public.org_account (org_id, name, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(1, 'World Resources Institute', '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
-INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(2, 'Doctors Without Borders', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+INSERT INTO public.org_account (org_id, name, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(2, 'Doctors Without Borders', '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
-INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(3, 'The Rotary Foundation', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+INSERT INTO public.org_account (org_id, name, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(3, 'The Rotary Foundation', '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
-INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(4, 'Humane Society of Boulder Valley', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+INSERT INTO public.org_account (org_id, name, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(4, 'Humane Society of Boulder Valley', '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
-INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(5, 'Boulder Shelter for the Homeless', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+INSERT INTO public.org_account (org_id, name, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(5, 'Boulder Shelter for the Homeless', '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
-INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(6, 'Direct Relief', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+INSERT INTO public.org_account (org_id, name, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(6, 'Direct Relief', '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
-INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(7, 'Community Food Share', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+INSERT INTO public.org_account (org_id, name, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(7, 'Community Food Share', '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
-INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(8, 'International Childrens Fund', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+INSERT INTO public.org_account (org_id, name, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(8, 'International Childrens Fund', '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
-INSERT INTO public.org_account (org_id, name, category_id, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
-VALUES(9, 'Conservation International', 9, '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
+INSERT INTO public.org_account (org_id, name, create_date, email, password, payment_id, activebool, verifiedbool, last_update, form_link)
+VALUES(9, 'Conservation International', '2020-11-03', 'ch@charityhub.org', 'test', 1, 1, 1, '2020-04-20 16:20:00', 'dev/forms/taxevasion.form');
 
 
 -- Details INSERT
@@ -243,34 +249,34 @@ VALUES(9, 'People need nature to thrive', 'Conservation International (CI) appli
 -- Address INSERT
 
 INSERT INTO public.address (address_id, address, district, city_id, postal_code, phone)
-VALUES(0, '1111 Engineering Drive', 'Boulder, CO', 0, '80309-0428', '(303) 867-5309');
+VALUES(0, '1111 Engineering Drive', 'Boulder, CO', 1, '80309-0428', '(303) 867-5309');
 
 INSERT INTO public.address (address_id, address, address2, district, city_id, postal_code, phone)
-VALUES(1, '10 G Street, NE', 'Suite 800', 'Washington, DC', 0, '20002', '(202) 729-7600');
+VALUES(1, '10 G Street, NE', 'Suite 800', 'Washington, DC', 1, '20002', '(202) 729-7600');
 
 INSERT INTO public.address (address_id, address, address2, district, city_id, postal_code, phone)
-VALUES(2, '40 Rector Street', '16th Floor', 'New York, NY', 0, '10006', '(212) 679-6800');
+VALUES(2, '40 Rector Street', '16th Floor', 'New York, NY', 1, '10006', '(212) 679-6800');
 
 INSERT INTO public.address (address_id, address, address2, district, city_id, postal_code, phone)
-VALUES(3, 'One Rotary Center', '1560 Sherman Avenue', 'Evanston, IL', 0, '60201', '(866) 976-8279');
+VALUES(3, 'One Rotary Center', '1560 Sherman Avenue', 'Evanston, IL', 1, '60201', '(866) 976-8279');
 
 INSERT INTO public.address (address_id, address, district, city_id, postal_code, phone)
-VALUES(4, ' 2323 55th Street', 'Boulder, CO', 0, '80301', '(303) 442-4030');
+VALUES(4, ' 2323 55th Street', 'Boulder, CO', 1, '80301', '(303) 442-4030');
 
 INSERT INTO public.address (address_id, address, district, city_id, postal_code, phone)
-VALUES(5, '4869 North Broadway', 'Boulder, CO', 0, '80304', '(303) 442-4646');
+VALUES(5, '4869 North Broadway', 'Boulder, CO', 1, '80304', '(303) 442-4646');
 
 INSERT INTO public.address (address_id, address, district, city_id, postal_code, phone)
-VALUES(6, '6100 Wallace Becknell Road', 'Santa Barbara, CA', 0, '93117', '(805) 964-4767');
+VALUES(6, '6100 Wallace Becknell Road', 'Santa Barbara, CA', 1, '93117', '(805) 964-4767');
 
 INSERT INTO public.address (address_id, address, district, city_id, postal_code, phone)
-VALUES(7, '650 S. Taylor Avenue', 'Louisville, CO', 0, '80027', '(303) 652-3663');
+VALUES(7, '650 S. Taylor Avenue', 'Louisville, CO', 1, '80027', '(303) 652-3663');
 
 INSERT INTO public.address (address_id, address, address2, district, city_id, postal_code, phone)
-VALUES(8, 'P.O. Box 583', '619 Main Street', 'Neenah, WI', 0, '54957', '(920) 729-5721');
+VALUES(8, 'P.O. Box 583', '619 Main Street', 'Neenah, WI', 1, '54957', '(920) 729-5721');
 
 INSERT INTO public.address (address_id, address, address2, district, city_id, postal_code, phone)
-VALUES(9, '2011 Crystal Drive', 'Suite 600', 'Arlington, VA', 0, '22202', '(800) 429-5660');
+VALUES(9, '2011 Crystal Drive', 'Suite 600', 'Arlington, VA', 1, '22202', '(800) 429-5660');
 
 
 -- Event INSERT
@@ -1028,8 +1034,8 @@ INSERT INTO public.country (country_id, country) VALUES (109, 'Zambia');
 ALTER TABLE ONLY public.address
     ADD CONSTRAINT address_pkey PRIMARY KEY (address_id);
 
-ALTER TABLE ONLY public.category
-    ADD CONSTRAINT category_pkey PRIMARY KEY (category_id);
+--ALTER TABLE ONLY public.category
+  --  ADD CONSTRAINT category_pkey PRIMARY KEY (category_id);
 
 ALTER TABLE ONLY public.city
     ADD CONSTRAINT city_pkey PRIMARY KEY (city_id);
@@ -1082,42 +1088,6 @@ ALTER TABLE ONLY public.org_details
   --  ADD CONSTRAINT category_category_id_fkey FOREIGN KEY (category_id)
     --REFERENCES public.org_account(category_id);
 
-ALTER TABLE ONLY public.org_account
-    ADD CONSTRAINT org_account_category_id_fkey FOREIGN KEY (category_id)
-    REFERENCES public.category(category_id);
-
-
-
-
---CREATE INDEX idx_fk_address_id
-  --  ON public.user_account
-    --USING btree (address_id);
-
---CREATE INDEX idx_fk_city_id
-  --  ON public.address
-    --USING btree (city_id);
-
---CREATE INDEX idx_fk_country_id
-  --  ON public.city
-    --USING btree (country_id);
-
---CREATE INDEX idx_fk_customer_id
-  --  ON public.payment
-    --USING btree (account_id);
-
---CREATE INDEX idx_last_name
-  --  ON public.user_account
-    --USING btree (last_name);
-
-  --  CREATE TYPE charity_type AS ENUM (
-    --    'Homelessness',
-      --  'Disaster',
-        --'Animal Rescue',
-        --'Environmental',
-      --  'Healthcare',
-  --      'Education',
---        'Arts',
-  --      'Hunger',
-    --    'Housing',
-      --  'International'
-  --  );
+--ALTER TABLE ONLY public.org_account
+  --  ADD CONSTRAINT org_account_category_id_fkey FOREIGN KEY (category_id)
+    --REFERENCES public.category(category_id);
