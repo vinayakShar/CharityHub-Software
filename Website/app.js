@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
@@ -15,6 +15,7 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const initializePassport = require('./routes/loginUser/passport-config');
 const renderHomepage = require('./routes/getCharities');
+const updateProfile = require('./routes/editProfile');
 const renderCharity = require('./routes/getCharity');
 const renderSearch = require('./routes/getSearch');
 const renderCalendar = require('./routes/getCalendar');
@@ -23,7 +24,7 @@ const url = require('url');
 initializePassport(passport);
 
 // Defining any modules, methods, etc. that the express application can use
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -39,7 +40,7 @@ app.use(flash());
 app.set('view-engine', 'ejs');
 
 // Home page route
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   renderHomepage.loadHomepage(req, res, checkLoggedIn);
 });
 
@@ -62,6 +63,20 @@ app.get('/view-charity', (req, res) => {
   renderCharity.loadCharity(req, res, url, checkLoggedIn);
 })
 
+// View profile
+app.get('/profile', (req, res) => {
+  res.render('pages/profile.ejs', {
+    loggedIn: checkLoggedIn(req),
+    user: req.user
+  })
+})
+
+// Update profile
+app.post('/profile', (req, res) => {
+  updateProfile(req);
+  res.redirect('/profile')
+})
+
 // Add event route
 app.get('/add-event', (req, res) => {
   res.render('pages/add-event.ejs', {
@@ -80,7 +95,7 @@ app.get('/calendar', (req, res) => {
 })
 
 // When user registers, create new user in DB and redirect to home route
-app.post('/register', checkNotAuthenticated, function(req, res) {
+app.post('/register', checkNotAuthenticated, function (req, res) {
   createUserRoute.createUser(req, res);
 });
 
@@ -100,16 +115,12 @@ app.delete('/logout_user', (req, res) => {
 // If user logged in, return true
 // This is used by ejs files to change page based on if user is logged in or not
 function checkLoggedIn(req) {
-  if(req.user) {
-    return true;
-  }
-
-  return false;
+  return (req.user ? true : false);
 }
 
 // If user is already logged in, redirect them to a page
 function checkNotAuthenticated(req, res, next) {
-  if(req.isAuthenticated()) {
+  if (req.isAuthenticated()) {
     return res.redirect('/');
   }
 

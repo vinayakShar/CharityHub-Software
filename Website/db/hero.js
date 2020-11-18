@@ -18,10 +18,6 @@ module.exports = {
     }
 }
 
-
-console.log('- - - - -Abracadabra, 5432 is the magic port- - - - -');
-
-
 /*
 client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
   if (err) throw err;

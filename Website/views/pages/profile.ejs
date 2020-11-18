@@ -1,54 +1,179 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Profile</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+   <link rel='icon' href='/img/favicon.ico' type='image/x-icon'>
+   <title>Profile</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+   <link rel="stylesheet" href="styles.css">
 </head>
 
-
 <body>
-	<%- include('../partials/nav.ejs', {bg: 0}) %>
+   <%- include('../partials/nav.ejs', {bg: 0}) %>
 
-	<div class="container">
-		<h1>Profile Page</h1>	 
-              	<div class="card text-xs-center"> 
-                <br>  
-                	<div class="card-block">
-				<img class="card-img-top" src="<%= avatar %>" alt="profile picture">
-				<h4 class="card-title">User Details</h4> <br>
-                    		<p class="card-text"> 
-                        	<strong>Username</strong>: <%= user.local.name %> 
-                        	<strong>Email</strong>: <%= user.local.email %>
-				<strong>Address</strong>: <%= user.local.address %>
-				<strong>Phone Number</strong>: <%= user.local.phone %> 
-                    		</p>
-				<br><br>
+   <% if (loggedIn) { %>
+   <h1 class="font-weight-bold text-center mt-4 mb-0">Profile Information</h1>
+   <p class="text-secondary text-center">Click on field to change value</p>
 
-				<form>
-					<div class="form-row">
-						<div class="col">
-							<a href="<%=link%>">Change Password</a>
-						</div>
-						<div class="col">
-							<a href="<%=link%>">Change Other Info</a>
-						</div>
-					</div>
-				</form>
+   <div class="container mt-5">
+      <div class="row">
+         <div class="col-md-3">
 
-                  	</div> 
-			<div class ="card-block">
-	                        <h4>Your Charities</h4>
-				
-	                </div>
-		</div>
-		<a href="" class="btn btn-default">Logout</a> 
-	</div>
-			
+            <img class="rounded-circle" src="/img/profile_pic.png" style="width: 100%;">
+            <h1 class="text-center font-weight-bold mt-3 mb-0"><%= user.first_name %> <%= user.last_name %></h1>
+            <h4 class="text-center text-secondary"><%= user.username %></h3>
 
+         </div>
+         <div class="col-md-8 ml-5" style="font-size: large;">
+            <div class="card bg-light">
+               <table class="table">
+                  <tr>
+                     <td>First Name</td>
+                     <td class="text-secondary" data-toggle="modal" data-target="#firstname_modal">
+                        <%= user.first_name %></td>
+                  </tr>
+                  <tr>
+                     <td>Last Name</td>
+                     <td class="text-secondary" data-toggle="modal" data-target="#lastname_modal">
+                        <%= user.last_name %></td>
+                  </tr>
+                  <tr>
+                     <td>Username</td>
+                     <td class="text-secondary" data-toggle="modal" data-target="#username_modal">
+                        <%= user.username %></td>
+                  </tr>
+                  <tr>
+                     <td>Email Address</td>
+                     <td class="text-secondary" data-toggle="modal" data-target="#email_modal">
+                        <%= user.email %></td>
+                  </tr>
+               </table>
+            </div>
+            <button type="button" class="btn text-info float-right" data-toggle="modal"
+               data-target="#password_modal">Change password</button>
+            <p class="text-secondary mt-2" style="font-size: small;">Last updated <%= String(user.last_update).split(' ').slice(0, 5).join(' ') + ' UTC'%></p>
+         </div>
+      </div>
+   </div>
 
+   <!-- First Name Modal -->
+   <div class="modal fade" id="firstname_modal" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <form action="/profile" method="post">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                     Edit Profile Information
+                  </h5>
+               </div>
+               <div class="modal-body">
+                  <input type="text" name="firstname" placeholder="Enter first name">
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
+   <!-- Last Name Modal -->
+   <div class="modal fade" id="lastname_modal" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <form action="/profile" method="post">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                     Edit Profile Information
+                  </h5>
+               </div>
+               <div class="modal-body">
+                  <input type="text" name="lastname" placeholder="Enter last name">
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
+   <!-- Username Modal -->
+   <div class="modal fade" id="username_modal" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <form action="/profile" method="post">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                     Edit Profile Information
+                  </h5>
+               </div>
+               <div class="modal-body">
+                  <input type="text" name="username" placeholder="Enter username">
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
+   <!-- Email Modal -->
+   <div class="modal fade" id="email_modal" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <form action="/profile" method="post">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                     Edit Profile Information
+                  </h5>
+               </div>
+               <div class="modal-body">
+                  <input type="email" name="email" placeholder="Enter email">
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
+   <!-- Password Modal -->
+   <div class="modal fade" id="password_modal" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <form action="/profile" method="post">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                     Edit Profile Information
+                  </h5>
+               </div>
+               <div class="modal-body">
+                  <input type="password" name="password" placeholder="Enter password">
+                  <input type="password" name="conf-password" placeholder="Confirm password">
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
+   <% } else { %>
+   <div class="container">
+      <h1>Please <a href="#login_modal" data-toggle="modal" onclick="loginOpenModal()">Login</a> to view profile
+         information.</h1>
+   </div>
+   <% } %>
 </body>
-
 
 </html>
