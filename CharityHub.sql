@@ -11,7 +11,7 @@ CREATE TABLE public.address (
     address character varying(50) NOT NULL,
     address2 character varying(50),
     district character varying(20) NOT NULL,
-    city_id smallint NOT NULL,
+    city_id smallint DEFAULT 1 NOT NULL,
     postal_code character varying(10),
     phone character varying(20) NOT NULL,
     last_update timestamp without time zone DEFAULT now() NOT NULL
@@ -124,10 +124,6 @@ CREATE TABLE public.event (
 );
 
 
-
-
-
-
 --       --
 --       --
 --INSERTS--
@@ -163,6 +159,15 @@ VALUES(3, 3, 300, '2020-04-20 16:20:00', 3, 1);
 
 INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
 VALUES(4, 4, 400, '2020-04-20 16:20:00', 4, 1);
+
+INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
+VALUES(5, 2, 50, '2020-04-20 16:20:00', 2, 1);
+
+INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
+VALUES(6, 2, 25, '2020-04-20 16:20:00', 2, 1);
+
+INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
+VALUES(7, 2, 75, '2020-04-20 16:20:00', 3, 1);
 
 
 -- User INSERT
@@ -3008,7 +3013,6 @@ INSERT INTO public.city (city_id, city, country_id) VALUES (2697, 'Zanesville', 
 INSERT INTO public.city (city_id, city, country_id) VALUES (2698, 'Zion', 233);
 
 
-
 --
 --Country INSERT (244 Countries)
 --
@@ -3290,7 +3294,7 @@ ALTER TABLE ONLY public.event
     ADD CONSTRAINT event_pkey PRIMARY KEY (event_id);
 
 ALTER TABLE ONLY public.payment
-    ADD CONSTRAINT payment_pkey PRIMARY KEY (payment_id);
+    ADD CONSTRAINT payment_pkey PRIMARY KEY (transaction_id);
 
 -- FOREIGN Keys
 
@@ -3310,9 +3314,9 @@ ALTER TABLE ONLY public.payment
   --  ADD CONSTRAINT payment_org_id_fkey FOREIGN KEY (payment_id)
     --REFERENCES public.org_account(payment_id);
 
-ALTER TABLE ONLY public.org_account
-    ADD CONSTRAINT org_account_org_id_fkey FOREIGN KEY (payment_id)
-    REFERENCES public.payment(payment_id);
+--ALTER TABLE ONLY public.org_account
+  --  ADD CONSTRAINT org_account_org_id_fkey FOREIGN KEY (payment_id)
+    --REFERENCES public.payment(payment_id);
 
 ALTER TABLE ONLY public.org_details
     ADD CONSTRAINT org_details_org_id_fkey FOREIGN KEY (org_id)
