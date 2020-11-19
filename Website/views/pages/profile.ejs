@@ -3,7 +3,7 @@
 
 <head>
    <link rel='icon' href='/img/favicon.ico' type='image/x-icon'>
-   <title>Profile</title>
+   <title>CharityHub Profile</title>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
    <link rel="stylesheet" href="styles.css">
@@ -13,7 +13,7 @@
    <%- include('../partials/nav.ejs', {bg: 0}) %>
 
    <% if (loggedIn) { %>
-   <h1 class="font-weight-bold text-center mt-4 mb-0">Profile Information</h1>
+   <h1 class="font-weight-bold text-center mt-4 mb-0"><%= user.first_name %></td>'s Profile Information</h1>
    <p class="text-secondary text-center">Click on field to change value</p>
 
    <div class="container mt-5">
@@ -53,6 +53,7 @@
             <button type="button" class="btn text-info float-right" data-toggle="modal"
                data-target="#password_modal">Change password</button>
             <p class="text-secondary mt-2" style="font-size: small;">Last updated <%= String(user.last_update).split(' ').slice(0, 5).join(' ') + ' UTC'%></p>
+            <a href="/history" type="button" class="btn btn-dark float-right">View Donation History</a>
          </div>
       </div>
    </div>

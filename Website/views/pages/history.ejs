@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel='icon' href='/img/favicon.ico' type='image/x-icon'>
+    <title>CharityHub - Donation History</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="/scripts/history.js"></script>
+</head>
+
+<body onload="viewHistory('<%= JSON.stringify(donation) %>')">
+    <!-- navigation bar -->
+    <%- include('../partials/nav.ejs', {bg: 1}) %>
+
+    <!-- form -->
+    <div class="container">
+        <br><h1>History of Donations Made</h1><br>
+
+        <% if (loggedIn) { %>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Charity Name</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="history_table">
+            </tbody>
+        </table>
+
+        <div class="container text-center col-6">
+            <div class="card border rounded border-dark">
+                <div class="card-header bg-warning text-dark h2 font-weight-bold">
+                    Total Donations
+                </div>
+                <div id="total" class="card-body h1">
+                </div>
+            </div>
+        </div>
+
+        <% } else { %>
+
+        <p>You must be logged in to view this.</p>
+
+        <% } %>
+
+    </div>
+    
+    <!-- footer -->
+    <%- include('../partials/footer.ejs') %>
+    
+</body>
+
+</html>

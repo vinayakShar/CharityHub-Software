@@ -19,6 +19,7 @@ const updateProfile = require('./routes/editProfile');
 const renderCharity = require('./routes/getCharity');
 const renderSearch = require('./routes/getSearch');
 const renderCalendar = require('./routes/getCalendar');
+const renderHistory = require('./routes/getHistory');
 const { render } = require('ejs');
 const url = require('url');
 initializePassport(passport);
@@ -75,6 +76,11 @@ app.get('/profile', (req, res) => {
 app.post('/profile', (req, res) => {
   updateProfile(req);
   res.redirect('/profile')
+})
+
+// Donation history
+app.get('/history', (req, res) => {
+  renderHistory.loadHistory(req, res, checkLoggedIn);
 })
 
 // Add event route
