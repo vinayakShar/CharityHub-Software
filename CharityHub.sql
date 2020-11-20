@@ -60,7 +60,8 @@ CREATE TABLE public.user_account (
     last_update timestamp without time zone DEFAULT now() NOT NULL,
     active integer NOT NULL,
     password character varying NOT NULL,
-    username character varying(20) NOT NULL
+    username character varying(20) NOT NULL,
+    photo_url character varying DEFAULT NULL
 );
 
 -- Charity Accounts Table
@@ -172,17 +173,17 @@ VALUES(7, 2, 75, '2020-04-20 16:20:00', 3, 1);
 
 -- User INSERT
 
-INSERT INTO public.user_account (account_id, first_name, last_name, email, address_id, create_date, last_update, active, password, username)
-VALUES (1, 'Micah', 'NA', 'test@test.com', 1, '2020-10-12', '2020-10-12 09:54:43', 1, 'test', 'test');
+INSERT INTO public.user_account (account_id, first_name, last_name, email, address_id, create_date, last_update, active, password, username, photo_url)
+VALUES (1, 'Micah', 'NA', 'test@test.com', 1, '2020-10-12', '2020-10-12 09:54:43', 1, 'test', 'test', 'www.test');
 
-INSERT INTO public.user_account (account_id, first_name, last_name, email, address_id, create_date, last_update, active, password, username)
-VALUES (2, 'Joseph', 'NA', 'test2@test.com', 1, '2020-10-12', '2020-10-12 09:54:43', 1, 'test2', 'test2');
+INSERT INTO public.user_account (account_id, first_name, last_name, email, address_id, create_date, last_update, active, password, username, photo_url)
+VALUES (2, 'Joseph', 'NA', 'test2@test.com', 1, '2020-10-12', '2020-10-12 09:54:43', 1, 'test2', 'test2', 'www.test');
 
-INSERT INTO public.user_account (account_id, first_name, last_name, email, address_id, create_date, last_update, active, password, username)
-VALUES (3, 'Vinny', 'NA', 'test3@test.com', 1, '2020-10-12', '2020-10-12 15:19:07', 1, 'test3', 'test3');
+INSERT INTO public.user_account (account_id, first_name, last_name, email, address_id, create_date, last_update, active, password, username, photo_url)
+VALUES (3, 'Vinny', 'NA', 'test3@test.com', 1, '2020-10-12', '2020-10-12 15:19:07', 1, 'test3', 'test3', 'www.test');
 
-INSERT INTO public.user_account (account_id, first_name, last_name, email, address_id, create_date, last_update, active, password, username)
-VALUES (4, 'Matt', 'NA', 'test4@test.com', 1, '2020-10-12', '2020-10-12 15:19:07', 1, 'test4', 'test4');
+INSERT INTO public.user_account (account_id, first_name, last_name, email, address_id, create_date, last_update, active, password, username, photo_url)
+VALUES (4, 'Matt', 'NA', 'test4@test.com', 1, '2020-10-12', '2020-10-12 15:19:07', 1, 'test4', 'test4', 'www.test');
 
 
 -- Charitiy INSERT
