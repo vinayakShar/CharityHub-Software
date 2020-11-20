@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 // Modules are defined here
 var express = require('express');
 var app = express();
-const portNum = 8000;
+const portNum = 5432;
 var path = require('path');
 var bodyParser = require('body-parser');
 var createUserRoute = require('./routes/createUser');
@@ -19,7 +19,6 @@ const updateProfile = require('./routes/editProfile');
 const renderCharity = require('./routes/getCharity');
 const renderSearch = require('./routes/getSearch');
 const renderCalendar = require('./routes/getCalendar');
-const renderHistory = require('./routes/getHistory');
 const { render } = require('ejs');
 const url = require('url');
 initializePassport(passport);
@@ -27,6 +26,7 @@ initializePassport(passport);
 // Defining any modules, methods, etc. that the express application can use
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
+
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -78,10 +78,12 @@ app.post('/profile', (req, res) => {
   res.redirect('/profile')
 })
 
+
 // Donation history
 app.get('/history', (req, res) => {
   renderHistory.loadHistory(req, res, checkLoggedIn);
 })
+
 
 // Add event route
 app.get('/add-event', (req, res) => {
@@ -133,8 +135,16 @@ function checkNotAuthenticated(req, res, next) {
   next();
 }
 
+/*
 // App to listen to the port
 app.listen(portNum, () => {
   console.log(`Example app listening on port ${portNum}!`);
   console.log(`Access local server with this address: http://localhost:${portNum}`);
+});
+*/
+
+const PORT = process.env.PORT || 8080;
+
+const server = app.listen(PORT, () => {
+	console.log(`Express running → PORT ${server.address().port}`);
 });
