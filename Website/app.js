@@ -17,6 +17,7 @@ const initializePassport = require('./routes/loginUser/passport-config');
 const renderHomepage = require('./routes/getCharities');
 const updateProfile = require('./routes/editProfile');
 const renderCharity = require('./routes/getCharity');
+const renderHistory = require('./routes/getHistory');
 const renderSearch = require('./routes/getSearch');
 const renderCalendar = require('./routes/getCalendar');
 const { render } = require('ejs');
