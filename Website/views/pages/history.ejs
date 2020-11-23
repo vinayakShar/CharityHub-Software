@@ -19,9 +19,10 @@
 
         <% if (loggedIn) { %>
 
-        <table class="table">
+        <table class="table table-hover">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Charity Name</th>
                     <th>Amount</th>
                     <th>Date</th>
@@ -31,12 +32,12 @@
             </tbody>
         </table>
 
-        <div class="container text-center col-6">
+        <div class="container text-center col-4">
             <div class="card border rounded border-dark">
                 <div class="card-header bg-warning text-dark h2 font-weight-bold">
                     Total Donations
                 </div>
-                <div id="total" class="card-body h1">
+                <div id="total" class="card-body display-4 text-dark font-weight-bold">
                 </div>
             </div>
         </div>

@@ -162,25 +162,6 @@ function loadCharity(num){
 
 	// Photo
 	document.getElementById("photo").src = './img/charity/' + charity[num].org_id + '.jpg';
-
-	/* Photo Gallery
-	if( charity[num].photo1 !== "" && charity[num].photo_title1 !== "" && charity[num].photo_text1 !== "" && charity[num].photo2 !== "" && charity[num].photo_title2 !== "" && charity[num].photo_text2 !== "" && charity[num].photo3 !== "" && charity[num].photo_title3 !== "" && charity[num].photo_text3 !== "" ) {
-		document.getElementById("photo1").src = './img/charity/' + charity[num].org_id + '.jpg';
-		document.getElementById("photo1").alt = charity[num].photo_title1;
-		document.getElementById("photo_title1").innerHTML = charity[num].photo_title1;
-		document.getElementById("photo_text1").innerHTML = charity[num].photo_text1;
-		document.getElementById("photo2").src = charity[num].photo2;
-		document.getElementById("photo2").alt = charity[num].photo_title2;
-		document.getElementById("photo_title2").innerHTML = charity[num].photo_title2;
-		document.getElementById("photo_text2").innerHTML = charity[num].photo_text2;
-		document.getElementById("photo3").src = charity[num].photo3;
-		document.getElementById("photo3").alt = charity[num].photo_title3;
-		document.getElementById("photo_title3").innerHTML = charity[num].photo_title3;
-		document.getElementById("photo_text3").innerHTML = charity[num].photo_text3;
-	}
-	else
-		document.getElementById("projectCarousel").style.display = "none";
-	*/
 }
 
 function eventDesc(num){
