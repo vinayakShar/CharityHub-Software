@@ -2,7 +2,6 @@
 <html>
 
 <head>
-	<link rel='icon' href='/img/favicon.ico' type='image/x-icon'>
 	<title id="charity_title"></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -13,6 +12,9 @@
 	<!--
 	<link rel="stylesheet" href="./styles/styles.css">
 	-->
+	 <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
+  	 <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
+
 </head>
 
 <body onload="viewCharity(new URLSearchParams(window.location.search).get('id'),'<%= JSON.stringify(charities) %>','<%= JSON.stringify(events) %>','<%= JSON.stringify(addresses) %>')">
@@ -89,15 +91,19 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" id="donation_buttons">
-			<div class="col">
-				<br><a type="button" class="btn btn-dark btn-lg" href="#" style="float: right;">Make a One-Time Donation</a>
-			</div>
-			<div class="col">
-				<br><a type="button" class="btn btn-danger btn-lg" href="#" style="float: left;">Schedule a Recurring Donation</a>
-			</div>
-		</div>
-	</div>
+						<div class="row" id="donation_buttons">
+
+				<form action="https://www.paypal.com/donate" method="post" target="_top">
+
+				<input type="hidden" name="hosted_button_id" value="J2CJ5RJ2FG3U8" />
+
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+
+				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+
+				</form>
+						</div>
+					</div>
 
 	<!-- photo gallery -->
 	<br>
@@ -124,6 +130,85 @@
 				</div>
 			</div>
 		</div>
+		<div id="projectCarousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#projectCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#projectCarousel" data-slide-to="1"></li>
+				<li data-target="#projectCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="d-block w-100" id="photo1" src="data:,">
+					<div class="carousel-caption d-none d-md-block">
+						<div class="card bg-dark">
+							<h4 id="photo_title1">[Title 1]</h4>
+							<p id="photo_text1">[Text 1]</p>
+							</div>
+		<div id="projectCarousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#projectCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#projectCarousel" data-slide-to="1"></li>
+				<li data-target="#projectCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="d-block w-100" id="photo1" src="data:,">
+					<div class="carousel-caption d-none d-md-block">
+						<div class="card bg-dark">
+							<h4 id="photo_title1">[Title 1]</h4>
+							<p id="photo_text1">[Text 1]</p></div>
+		<div id="projectCarousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#projectCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#projectCarousel" data-slide-to="1"></li>
+				<li data-target="#projectCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="d-block w-100" id="photo1" src="data:,">
+					<div class="carousel-caption d-none d-md-block">
+						<div class="card bg-dark">
+							<h4 id="photo_title1">[Title 1]</h4>
+							<p id="photo_text1">[Text 1]</p></div>
+		<div id="projectCarousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#projectCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#projectCarousel" data-slide-to="1"></li>
+				<li data-target="#projectCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="d-block w-100" id="photo1" src="data:,">
+					<div class="carousel-caption d-none d-md-block">
+						<div class="card bg-dark">
+							<h4 id="photo_title1">[Title 1]</h4>
+							<p id="photo_text1">[Text 1]</p></div>
+		<div id="projectCarousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#projectCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#projectCarousel" data-slide-to="1"></li>
+				<li data-target="#projectCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="d-block w-100" id="photo1" src="data:,">
+					<div class="carousel-caption d-none d-md-block">
+						<div class="card bg-dark">
+							<h4 id="photo_title1">[Title 1]</h4>
+							<p id="photo_text1">[Text 1]</p></div>
+		<div id="projectCarousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#projectCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#projectCarousel" data-slide-to="1"></li>
+				<li data-target="#projectCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="d-block w-100" id="photo1" src="data:,">
+					<div class="carousel-caption d-none d-md-block">
+						<div class="card bg-dark">
+							<h4 id="photo_title1">[Title 1]</h4>
+							<p id="photo_text1">[Text 1]</p></div>
 		<div id="projectCarousel" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				<li data-target="#projectCarousel" data-slide-to="0" class="active"></li>
