@@ -16,6 +16,7 @@ const methodOverride = require('method-override');
 const initializePassport = require('./routes/loginUser/passport-config');
 const renderHomepage = require('./routes/getCharities');
 const updateProfile = require('./routes/editProfile');
+const createChar = require('./routes/createCharity');
 const renderCharity = require('./routes/getCharity');
 const renderHistory = require('./routes/getHistory');
 const renderSearch = require('./routes/getSearch');
@@ -59,6 +60,12 @@ app.get('/add-charity', (req, res) => {
     loggedIn: checkLoggedIn(req)
   });
 });
+
+// Create charity
+app.post('/add-charity', (req, res) => {
+  createChar(req);
+  res.redirect('/add-charity')
+})
 
 // View charity route
 app.get('/view-charity', (req, res) => {

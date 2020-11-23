@@ -13,11 +13,12 @@
 <body>
     <!-- navigation bar -->
     <%- include('../partials/nav.ejs', {bg: 1}) %>
+    <% if (loggedIn) { %>
 
 	<!-- form -->
 	<div class="container">
 		<br><h1>Add a Charity</h1><br>
-		<form>
+		<form action="/add-charity" method="post">
 			<div class="form-row">
 				<div class="col">
 					<div class="form-group">
@@ -88,9 +89,16 @@
 					</div>
 				</div>
 			</div>
-			<a type="submit" class="btn btn-dark" style="float: right;">Submit</a>
+			<button type="submit" class="btn btn-dark" style="float: right;">Submit</button>
 		</form>
 	</div>
+
+	<% } else { %>
+   <div class="container">
+      <h1>Please <a href="#login_modal" data-toggle="modal" onclick="loginOpenModal()">Login</a> to add a 
+         charity.</h1>
+   </div>
+   <% } %>
     
     <!-- footer -->
     <%- include('../partials/footer.ejs') %>
