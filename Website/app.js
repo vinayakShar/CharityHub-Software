@@ -23,6 +23,7 @@ const renderSearch = require('./routes/getSearch');
 const renderCalendar = require('./routes/getCalendar');
 const { render } = require('ejs');
 const url = require('url');
+const bcrypt = require('bcrypt');
 initializePassport(passport);
 
 // Defining any modules, methods, etc. that the express application can use
@@ -112,7 +113,7 @@ app.get('/calendar', (req, res) => {
 
 // When user registers, create new user in DB and redirect to home route
 app.post('/register', checkNotAuthenticated, function (req, res) {
-  createUserRoute.createUser(req, res);
+  createUserRoute.createUser(req, res, bcrypt);
 });
 
 // Uses passport module to login user

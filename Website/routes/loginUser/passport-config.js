@@ -1,20 +1,28 @@
 const LocalStrategy = require('passport-local').Strategy;
 const db = require('../../db/hero');
+const bcrypt = require('bcrypt');
 // const loginUser = require('./loginUser');
 
 // Authenticates when a user logins to see if that account exists within the DB
 function authenticateUser(username, password, done)
 {
     // Obtain account
-    const findUserQuery = `SELECT * FROM user_account WHERE email = '${username}' AND password = '${password}' LIMIT 1;`;
+
+    const findUserQuery = `SELECT * FROM user_account WHERE email = '${username}' LIMIT 1;`;
 
     db.query(findUserQuery)
     .then(response => {
         if(!response.rows[0])
         {
-            return done(null, false, { message: 'Wrong username and/or password' });
+            return done(null, false, { message: 'Wrong username' });
         } else {
-            return done(null, response.rows[0]);
+            bcrypt.compare(password, response.rows[0].password)
+            .then(res => {
+                if(res) {
+                    return done(null, response.rows[0])
+                }
+                return done(null, false, { message: 'Wrong password' });
+            })
         }
     })
     .catch(error => {

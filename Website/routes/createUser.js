@@ -32,7 +32,7 @@ function createAccountID(response) {
 
 // When a user hits submit on register.html, add data from
 // the form to create a new user on the CharityHub database
-function createUser(request)
+function createUser(request, bcrypt)
 {
     console.log("Attempting to create new user...");
     const email = request.body.email;
@@ -47,19 +47,24 @@ function createUser(request)
     db.query(selectIDQuery)
     .then(response => {
         const newAccountID = createAccountID(response);
-        const insertQuery = `INSERT INTO user_account${insertTypes} VALUES (${newAccountID}, 'NA', 'NA', '${email}', 0, '${creationDate}', '${fullTimestamp}', 1, '${password}', 'NA');`;
-        db.query(insertQuery, (error, response) => {
-            if(error) {
-                throw error;
-            }
-            console.log("Insert successful! Check PGAdmin for new row entry.");
-        });
+        bcrypt.hash(password, 10)
+        .then(res => {
+            const encryptedPassword = res;
+            const insertQuery = `INSERT INTO user_account${insertTypes} VALUES (${newAccountID}, 'NA', 'NA', '${email}', 0, '${creationDate}', '${fullTimestamp}', 1, '${encryptedPassword}', 'NA');`;
+            db.query(insertQuery, (error, response) => {
+                if(error) {
+                    throw error;
+                }
+                console.log("Insert successful! Check PGAdmin for new row entry.");
+            });
+        })
+        .catch(error => console.log("Password hashing error: " + error));
     })
     .catch(error => console.log(error));
 }
 
 // Checks if there is a user that already exists with the same email
-function checkUserExists(request, response, createUserCallback)
+function checkUserExists(request, response, createUserCallback, bcrypt)
 {
     const email = request.body.email;
     const checkExistsQuery = `SELECT EXISTS(SELECT * FROM user_account WHERE email = '${email}')`;
@@ -72,7 +77,7 @@ function checkUserExists(request, response, createUserCallback)
             response.redirect('/');
             response.end();
         } else {
-            createUserCallback(request);
+            createUserCallback(request, bcrypt);
             response.redirect('/');
             response.end();
         }
@@ -86,5 +91,5 @@ function checkUserExists(request, response, createUserCallback)
 }
 
 module.exports = {
-    createUser: (request, response) => { checkUserExists(request, response, createUser) }
+    createUser: (request, response, bcrypt) => { checkUserExists(request, response, createUser, bcrypt) }
 }
