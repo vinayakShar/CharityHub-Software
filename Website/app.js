@@ -161,5 +161,6 @@ app.listen(portNum, () => {
 const PORT = process.env.PORT || 8080;
 
 const server = app.listen(PORT, () => {
-	console.log(`Express running → PORT ${server.address().port}`);
+    console.log(`Express running → PORT ${server.address().port}`);
+    console.log(`Link: http://localhost:${server.address().port}`)
 });

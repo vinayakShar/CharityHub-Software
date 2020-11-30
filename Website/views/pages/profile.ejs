@@ -6,7 +6,6 @@
    <title>CharityHub Profile</title>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -19,8 +18,8 @@
    <div class="container mt-5">
       <div class="row">
          <div class="col-md-3">
-
-            <img class="rounded-circle" src="/img/profile_pic.png" style="width: 100%;">
+            <img class="rounded-circle" src="<%= user.photo_url %>" style="width: 250px; height: 250px;"
+               data-toggle="modal" data-target="#photo_modal">
             <h1 class="text-center font-weight-bold mt-3 mb-0"><%= user.first_name %> <%= user.last_name %></h1>
             <h4 class="text-center text-secondary"><%= user.username %></h3>
 
@@ -52,7 +51,8 @@
             </div>
             <button type="button" class="btn text-info float-right" data-toggle="modal"
                data-target="#password_modal">Change password</button>
-            <p class="text-secondary mt-2" style="font-size: small;">Last updated <%= String(user.last_update).split(' ').slice(0, 5).join(' ') + ' UTC'%></p>
+            <p class="text-secondary mt-2" style="font-size: small;">Last updated
+               <%= String(user.last_update).split(' ').slice(0, 5).join(' ') + ' UTC'%></p>
             <a href="/history" type="button" class="btn btn-dark float-right">View Donation History</a>
          </div>
       </div>
@@ -169,12 +169,48 @@
       </div>
    </div>
 
+   <!-- Photo Modal -->
+   <div class="modal fade" id="photo_modal" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <form action="/profile" method="post">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                     Edit Profile Information
+                  </h5>
+               </div>
+               <div class="modal-body">
+                  <input type="text" name="tags" id="tag" placeholder="Enter photo tag"></input>
+                  <div id="photos">
+
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+
    <% } else { %>
    <div class="container">
       <h1>Please <a href="#login_modal" data-toggle="modal" onclick="loginOpenModal()">Login</a> to view profile
          information.</h1>
    </div>
    <% } %>
+
+
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"></script>
+
 </body>
 
 </html>
