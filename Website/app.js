@@ -21,6 +21,7 @@ const renderCharity = require('./routes/getCharity');
 const renderHistory = require('./routes/getHistory');
 const renderSearch = require('./routes/getSearch');
 const renderCalendar = require('./routes/getCalendar');
+const createEve = require('./routes/createEvent');
 const { render } = require('ejs');
 const url = require('url');
 initializePassport(passport);
@@ -99,6 +100,12 @@ app.get('/add-event', (req, res) => {
     loggedIn: checkLoggedIn(req)
   });
 });
+
+// Create event
+app.post('/add-event', (req, res) => {
+  createEve(req);
+  res.redirect('/add-event')
+})
 
 // Search route
 app.get('/search', (req, res) => {
