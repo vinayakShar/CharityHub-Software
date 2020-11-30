@@ -21,6 +21,7 @@ const renderCharity = require('./routes/getCharity');
 const renderHistory = require('./routes/getHistory');
 const renderSearch = require('./routes/getSearch');
 const renderCalendar = require('./routes/getCalendar');
+const createEve = require('./routes/createEvent');
 const { render } = require('ejs');
 const url = require('url');
 const bcrypt = require('bcrypt');
@@ -101,6 +102,12 @@ app.get('/add-event', (req, res) => {
   });
 });
 
+// Create event
+app.post('/add-event', (req, res) => {
+  createEve(req);
+  res.redirect('/add-event')
+})
+
 // Search route
 app.get('/search', (req, res) => {
   renderSearch.loadSearch(req, res, url, checkLoggedIn);
@@ -155,5 +162,6 @@ app.listen(portNum, () => {
 const PORT = process.env.PORT || 8080;
 
 const server = app.listen(PORT, () => {
-	console.log(`Express running → PORT ${server.address().port}`);
+    console.log(`Express running → PORT ${server.address().port}`);
+    console.log(`Link: http://localhost:${server.address().port}`)
 });

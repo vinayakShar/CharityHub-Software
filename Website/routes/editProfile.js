@@ -1,6 +1,7 @@
 const db = require('../db/hero');
+const fetch = require('node-fetch')
 
-module.exports = (req) => {
+module.exports = async (req) => {
     let column = '', value = ''
 
     if (req.body.firstname) {
@@ -20,9 +21,20 @@ module.exports = (req) => {
         value = req.body.email
     }
     else if (req.body.password) {
-        // the change password field is unfinished... I can work on this later if necessary. -Phil
         column = 'password'
         value = req.body.password
+    }
+    else if (req.body.tags) {
+        column = 'photo_url'
+
+        const key = '7958caab02b88e42f0df046c97bb261c'
+        let tags = req.body.tags
+        let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${key}&tags=${tags}&privacy_filter=1&safe_search=1&extras=url_sq&page=0&format=json&nojsoncallback=1`
+
+        const res = await fetch(url);
+        const json = await res.json();
+        value = json.photos.photo[0].url_sq
+
     }
 
     // update information
