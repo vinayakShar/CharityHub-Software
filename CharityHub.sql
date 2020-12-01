@@ -153,22 +153,23 @@ INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, pay
 VALUES(1, 1, 100, '2020-04-20 16:20:00', 1, 1);
 
 INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(2, 2, 200, '2020-04-20 16:20:00', 2, 1);
+VALUES(2, 1, 200, '2020-04-20 16:20:00', 2, 1);
 
 INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(3, 3, 300, '2020-04-20 16:20:00', 3, 1);
+VALUES(3, 1, 300, '2020-04-20 16:20:00', 3, 1);
 
 INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(4, 4, 400, '2020-04-20 16:20:00', 4, 1);
+VALUES(4, 1, 400, '2020-04-20 16:20:00', 4, 1);
 
 INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(5, 2, 50, '2020-04-20 16:20:00', 2, 1);
+VALUES(5, 1, 50, '2020-04-20 16:20:00', 2, 1);
 
 INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(6, 2, 25, '2020-04-20 16:20:00', 2, 1);
+VALUES(6, 1, 25, '2020-04-20 16:20:00', 2, 1);
 
 INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(7, 2, 75, '2020-04-20 16:20:00', 3, 1);
+VALUES(7, 1, 75, '2020-04-20 16:20:00', 3, 1);
+
 
 
 -- User INSERT
