@@ -22,7 +22,7 @@ function getCharityInfo(req, res, url, checkLoggedIn)
 
     db.query(charityInfoQuery)
     .then(data => {
-        console.log(data.rows);
+        // console.log(data.rows);
         // res.render('pages/view-charity.ejs', {
         //     loggedIn: checkLoggedIn(req),
         //     failLoggedInMessage: req.flash('error'),
@@ -30,10 +30,10 @@ function getCharityInfo(req, res, url, checkLoggedIn)
         // });
         db.query(getEventsQuery)
         .then(eventData => {
-            console.log(eventData);
+            // console.log(eventData);
             db.query(getAddressQuery)
             .then(addressData => {
-                console.log(addressData);
+                // console.log(addressData);
                 res.render('pages/view-charity.ejs', {
                     loggedIn: checkLoggedIn(req),
                     failLoggedInMessage: req.flash('error'),
