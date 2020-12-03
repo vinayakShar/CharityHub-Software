@@ -83,8 +83,8 @@ app.get('/profile', (req, res) => {
 })
 
 // Update profile
-app.post('/profile', (req, res) => {
-  updateProfile(req);
+app.post('/profile', async (req, res) => {
+  await updateProfile(req);
   res.redirect('/profile')
 })
 
@@ -162,6 +162,6 @@ app.listen(portNum, () => {
 const PORT = process.env.PORT || 8080;
 
 const server = app.listen(PORT, () => {
-    console.log(`Express running → PORT ${server.address().port}`);
-    console.log(`Link: http://localhost:${server.address().port}`)
+  console.log(`Express running → PORT ${server.address().port}`);
+  console.log(`Link: http://localhost:${server.address().port}`)
 });
