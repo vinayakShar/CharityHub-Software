@@ -52,14 +52,16 @@ app.get('/', function (req, res) {
 // About page route
 app.get('/about', (req, res) => {
   res.render('pages/about.ejs', {
-    loggedIn: checkLoggedIn(req)
+    loggedIn: checkLoggedIn(req),
+    user: req.user
   });
 });
 
 // Add charity route
 app.get('/add-charity', (req, res) => {
   res.render('pages/add-charity.ejs', {
-    loggedIn: checkLoggedIn(req)
+    loggedIn: checkLoggedIn(req),
+    user: req.user
   });
 });
 
@@ -98,7 +100,8 @@ app.get('/history', (req, res) => {
 // Add event route
 app.get('/add-event', (req, res) => {
   res.render('pages/add-event.ejs', {
-    loggedIn: checkLoggedIn(req)
+    loggedIn: checkLoggedIn(req),
+    user: req.user
   });
 });
 

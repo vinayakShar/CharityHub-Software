@@ -18,18 +18,14 @@ function getCharityInfo(req, res, checkLoggedIn)
 
     db.query(charityInfoQuery)
     .then(data => {
-        // res.render('pages/home.ejs', {
-        //     loggedIn: checkLoggedIn(req),
-        //     failLoggedInMessage: req.flash('error'),
-        //     charities: data.rows
-        // });
         db.query(getEventsQuery)
         .then(eventData => {
             res.render('pages/home.ejs', {
                 loggedIn: checkLoggedIn(req),
                 failLoggedInMessage: req.flash('error'),
                 charities: data.rows,
-                events: eventData.rows
+                events: eventData.rows, 
+                user: req.user
             });
         })
         .catch(err => {

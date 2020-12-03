@@ -39,7 +39,8 @@ function getCharityInfo(req, res, url, checkLoggedIn)
                     failLoggedInMessage: req.flash('error'),
                     charities: data.rows,
                     events: eventData.rows,
-                    addresses: addressData.rows[0]
+                    addresses: addressData.rows[0],
+                    user: req.user
                 });
             })
             .catch(err => {

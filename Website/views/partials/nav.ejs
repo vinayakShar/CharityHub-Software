@@ -8,6 +8,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script src="/scripts/modalScripts.js"></script>
 
 <div style="background-image: url('./img/head_bg0<%= bg %>.jpg'); background-size: cover;">
@@ -31,35 +33,33 @@
         <a class="navbar-brand" id="charity_brand"></a>
         <% if(loggedIn) { %>
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <form id="logoutForm" action="/logout_user?_method=DELETE" method="POST">
-                    <a class="nav-link" href="javascript:{}"
-                        onclick="document.getElementById('logoutForm').submit();">Logout</a>
-                </form>
-            </li>
-            <li class="navbar-item">
-                <a class="nav-link" href="/profile">Profile</a>
+            <!-- dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-item dropdown-toggle" href="#" data-toggle="dropdown">
+                    <img src="<%= user.photo_url %>" class="rounded-circle" width="40" height="40"
+                        style="padding-top: 0; padding-bottom: 0; margin-left: 10px; margin-right: 10px;">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <p class="dropdown-item-text">Signed in as <strong><%= user.username %></strong></p>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/profile">Profile</a>
+                    <form id="logoutForm" action="/logout_user?_method=DELETE" method="POST">
+                        <a class="dropdown-item" href="javascript:{}"
+                            onclick="document.getElementById('logoutForm').submit();">Logout</a>
+                    </form>
+
+                </div>
             </li>
         </ul>
         <% } else { %>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="#register_modal" class="nav-link" data-toggle="modal" onclick="registerOpenModal()">Register</a>
+                <a href="#register_modal" class="nav-link" data-toggle="modal"
+                    onclick="registerOpenModal()">Register</a>
             </li>
             <li class="nav-item">
                 <a href="#login_modal" class="nav-link" data-toggle="modal" onclick="loginOpenModal()">Login</a>
             </li>
-            <!-- <li class="nav-item dropdown">
-                <a class="nav-item dropdown-toggle" href="#">
-                    <img src="/img/profile_pic.png" class="rounded-circle" width="40" height="40"
-                        style="padding-top: 0; padding-bottom: 0; margin-left: 10px; margin-right: 10px;">
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Something</a>
-                    <a class="dropdown-item" href="#">Something else</a>
-                </div>
-
-            </li> -->
         </ul>
         <% } %>
     </nav>
@@ -80,6 +80,10 @@
                 <form class="form-signin" action="/register" method="POST">
                     <div class="form-group">
                         <input id="reg-email" type="email" class="form-control" name="email" placeholder="Email Address"
+                            required="required">
+                    </div>
+                    <div class="form-group">
+                        <input id="reg-username" type="text" class="form-control" name="username" placeholder="Username"
                             required="required">
                     </div>
                     <div class="form-group">

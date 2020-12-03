@@ -9,28 +9,28 @@
 </head>
 
 <body onload="getHome('<%= JSON.stringify(charities) %>','<%= JSON.stringify(events) %>')">
-    
-    <!-- navigation bar -->
-    <%- include('../partials/nav.ejs', {bg: 0}) %>
-	
-    <% // if(messages.error) { %>
+
+	<!-- navigation bar -->
+	<%- include('../partials/nav.ejs', {bg: 0}) %>
+
+	<% // if(messages.error) { %>
 	<%// = messages.error %>
 	<%//  } %>
 
 	<% if(failLoggedInMessage.length > 0) { %>
-		<div class="container alert alert-danger" role="alert" style="text-align: center">
-			<%= failLoggedInMessage %>
-		</div>
+	<div class="container alert alert-danger" role="alert" style="text-align: center">
+		<%= failLoggedInMessage %>
+	</div>
 	<% } %>
 
 	<br>
 	<div class="container">
 
-    <!-- search box -->
-    	<%- include('../partials/searchbox.ejs') %>
+		<!-- search box -->
+		<%- include('../partials/searchbox.ejs') %>
 		<br>
 
-    <!-- charity cards -->
+		<!-- charity cards -->
 		<a type="button" class="btn btn-dark btn-lg" href="/add-charity" style="float: right;">Add a Charity</a>
 		<br>
 		<h3 id="title1">Featured</h3>
@@ -39,12 +39,17 @@
 		<h3 id="title2">Trending</h3>
 		<div class="card-deck text-center" id="row2"></div>
 		<br>
-		<div class="container bg-light border rounded border-dark" style="background-image: url('./img/head_bg00d.jpg'); background-size: cover;">
-			<br><h1 class="display-4 text-white text-center" style="text-shadow: -1px -1px 0 #000, 2px -1px 0 #000, -1px 2px 0 #000, 2px 2px 0 #000;">Upcoming Events</h1>
+		<div class="container bg-light border rounded border-dark"
+			style="background-image: url('./img/head_bg00d.jpg'); background-size: cover;">
+			<br>
+			<h1 class="display-4 text-white text-center"
+				style="text-shadow: -1px -1px 0 #000, 2px -1px 0 #000, -1px 2px 0 #000, 2px 2px 0 #000;">Upcoming Events
+			</h1>
 			<div class="card-deck" id="events">
 			</div><br>
 			<div>
-				<a href="/calendar" class="btn btn-danger btn-lg text-center border border-rounded border-dark" style="float: right;">View All Events</a>
+				<a href="/calendar" class="btn btn-danger btn-lg text-center border border-rounded border-dark"
+					style="float: right;">View All Events</a>
 			</div><br>
 		</div>
 		<br>
@@ -54,14 +59,18 @@
 	<br>
 
 	<!-- type suggestions -->
-	<div class="container bg-light border rounded border-dark" style="background-image: url('./img/head_bg00c.jpg'); background-size: cover;">
-		<br><h1 class="display-4 text-primary text-center" style="text-shadow: -1px -1px 0 #000, 2px -1px 0 #000, -1px 2px 0 #000, 2px 2px 0 #000;">View all charities for...</h1>
+	<div class="container bg-light border rounded border-dark"
+		style="background-image: url('./img/head_bg00c.jpg'); background-size: cover;">
+		<br>
+		<h1 class="display-4 text-primary text-center"
+			style="text-shadow: -1px -1px 0 #000, 2px -1px 0 #000, -1px 2px 0 #000, 2px 2px 0 #000;">View all charities
+			for...</h1>
 		<div class="container text-center col-9" id="types">
 		</div><br>
 	</div>
-    
-    <!-- footer -->
-    <%- include('../partials/footer.ejs') %>
+
+	<!-- footer -->
+	<%- include('../partials/footer.ejs') %>
 
 </body>
 

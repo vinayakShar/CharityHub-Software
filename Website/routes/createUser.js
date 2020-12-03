@@ -37,11 +37,12 @@ function createUser(request, bcrypt)
     console.log("Attempting to create new user...");
     const email = request.body.email;
     const password = request.body.password;
+    const username = request.body.username;
     const creationDate = createDate();
     const creationTimestamp = createTimestamp();
     const fullTimestamp = creationDate + " " + creationTimestamp;
     const selectIDQuery = `SELECT * FROM user_account ORDER BY account_id DESC LIMIT 1`;
-    const insertTypes = `(account_id, first_name, last_name, email, address_id, create_date, last_update, active, password, username)`;
+    const insertTypes = `(account_id, first_name, last_name, email, address_id, create_date, last_update, active, password, username, photo_url)`;
 
     // Select the most recent entry in the DB, then create a new account number and insert into the user_account table
     db.query(selectIDQuery)
@@ -50,7 +51,7 @@ function createUser(request, bcrypt)
         bcrypt.hash(password, 10)
         .then(res => {
             const encryptedPassword = res;
-            const insertQuery = `INSERT INTO user_account${insertTypes} VALUES (${newAccountID}, 'NA', 'NA', '${email}', 0, '${creationDate}', '${fullTimestamp}', 1, '${encryptedPassword}', 'NA');`;
+            const insertQuery = `INSERT INTO user_account${insertTypes} VALUES (${newAccountID}, 'NA', 'NA', '${email}', 0, '${creationDate}', '${fullTimestamp}', 1, '${encryptedPassword}', '${username}', 'https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg');`;
             db.query(insertQuery, (error, response) => {
                 if(error) {
                     throw error;

@@ -40,7 +40,8 @@ function getCharityInfo(req, res, url, checkLoggedIn)
             failLoggedInMessage: req.flash('error'),
             charities: data.rows,
             term: search.term,
-            page: search.page
+            page: search.page,
+            user: req.user
         });
     })
     .catch(err => {
