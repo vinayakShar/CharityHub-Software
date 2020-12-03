@@ -25,6 +25,7 @@ const createEve = require('./routes/createEvent');
 const { render } = require('ejs');
 const url = require('url');
 const bcrypt = require('bcrypt');
+const updatePayment = require('./routes/updatePayment')
 initializePassport(passport);
 
 // Defining any modules, methods, etc. that the express application can use
@@ -119,6 +120,18 @@ app.get('/search', (req, res) => {
 // Calendar route
 app.get('/calendar', (req, res) => {
   renderCalendar.loadCalendar(req, res, checkLoggedIn);
+})
+
+app.get('/pay', (req, res) => {
+  res.render('pages/pay.ejs', {
+    loggedIn: checkLoggedIn(req)
+  })
+})
+
+app.post('/pay', (req, res) => {
+  updatePayment(req)
+
+  res.redirect('/')
 })
 
 // When user registers, create new user in DB and redirect to home route
