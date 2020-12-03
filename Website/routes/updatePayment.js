@@ -27,7 +27,7 @@ function insertPayment(req) {
     // Obtain org and account ids
     db.query(selectIdsQuery)
     .then(res => {
-        const org_id = res.rows[0].org_id
+        const payment_id = res.rows[0].org_id
         const account_id = res.rows[0].account_id
         // Obtain new transaction id from most recent transaction id in table
         db.query(selectTransactionIdQuery)
@@ -37,7 +37,7 @@ function insertPayment(req) {
                 payment
             VALUES(
                 ${res.rows[0].transaction_id + 1},
-                ${org_id},
+                ${payment_id},
                 ${account_id},
                 0.00,
                 (to_timestamp(${Date.now()} / 1000)),
