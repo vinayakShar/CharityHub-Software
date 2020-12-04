@@ -28,3 +28,5 @@ The lastest code for our website is found within /Website/
 A local version of our database can be recreated with CharityHub.sql
 
 Project milestones can be found within /MILESTONES/
+
+To run/test code on a local machine, run "node app.js" and go to localhost:8080. Make sure to have npm install.
