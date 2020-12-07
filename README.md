@@ -29,4 +29,35 @@ A local version of our database can be recreated with CharityHub.sql
 
 Project milestones can be found within /MILESTONES/
 
-To run/test code on a local machine, run "node app.js" and go to localhost:8080. Make sure to have npm install.
+TESTING 
+
+-To run/test code on a local machine, run "node app.js" and go to localhost:8080. Make sure to have npm install.
+
+
+-PayPal Test Payment Credentials
+//Can use these to make payments to sandbox (try not to spend it all)
+
+User Name:
+sb-fl0g03965234@personal.example.com
+
+Password:
+cF7*?|Au
+
+
+
+-Heroku postgreSQL Credentials for DB Testing/Viewing
+
+Host
+    ec2-34-232-24-202.compute-1.amazonaws.com
+Database
+    da21001os1ce9n
+User
+    ccymiucxeppyjz
+Port
+    5432
+Password
+    facdd2d9c5c6beec0a7c23a93983082695eec0fc5460e67ae3f8bcbae31ebd9e
+URI
+    postgres://ccymiucxeppyjz:facdd2d9c5c6beec0a7c23a93983082695eec0fc5460e67ae3f8bcbae31ebd9e@ec2-34-232-24-202.compute-1.amazonaws.com:5432/da21001os1ce9n
+Heroku CLI
+    heroku pg:psql postgresql-rectangular-14472 --app charity-hub-dev
