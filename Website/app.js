@@ -27,7 +27,7 @@ const url = require('url');
 const bcrypt = require('bcrypt');
 
 const db = require('./db/hero');
-const paypal = require('paypal-rest-SDK');
+const paypal = require('paypal-rest-sdk');
 
 const cookieParser = require('cookie-parser');
 
@@ -200,8 +200,8 @@ app.post('/pay', (req, res) => {
         "payment_method": "paypal"
     },
     "redirect_urls": {
-        "return_url": "/success",
-        "cancel_url": "/cancel"
+        "return_url": "https://charity-hub-dev.herokuapp.com/success", // Change to 'http://localhost:8080/success' for local
+        "cancel_url": "https://charity-hub-dev.herokuapp.com/cancel" // Change to 'http://localhost:8080/cancel' for local
     },
     "transactions": [{
         "item_list": {
@@ -266,7 +266,7 @@ app.get('/success', (req, res) => {
 
           db.query(`INSERT INTO public.payment(transaction_id, unique_payer, payment_id, account_id, amount, payment_date, type)
           VALUES('${transaction_id}', '${unique_payer}', ${payment_id}, 2, ${amount}, now(), '${type}');`);
-          res.redirect('/');
+          res.redirect(`/view-charity?id=${payment_id}`); // Change to 'http://localhost:8080' for local
       }
   });
   });
