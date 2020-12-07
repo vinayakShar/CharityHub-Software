@@ -2,11 +2,11 @@ const db = require('../db/hero');
 
 // Obtains charity names and info about them, then
 // returns that info to the homepage to render
-function getCharityInfo(req, res, url, checkLoggedIn) 
+function getCharityInfo(req, res, url, checkLoggedIn)
 {
     // Change `LIMIT 9` to different value if you want the frontend
     // to have access to more charities
-    const charityInfoQuery = 
+    const charityInfoQuery =
     `SELECT
         org_account.name, org_details.*
     FROM
@@ -57,6 +57,7 @@ function getCharityInfo(req, res, url, checkLoggedIn)
         console.log(err);
         res.status(500).send("Error code 500: Internal server error");
     })
+    res.cookie('charInst', charityID.id);
 }
 
 module.exports = {
