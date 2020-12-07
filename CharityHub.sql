@@ -17,7 +17,6 @@ CREATE TABLE public.address (
     last_update timestamp without time zone DEFAULT now() NOT NULL
 );
 
-COMMENT ON TABLE public.address IS 'Addresses associated with user billing and Charity information. ';
 
 -- Charity Type Category Table
 
@@ -104,12 +103,13 @@ CREATE TABLE public.org_details (
 -- Payment Table
 
 CREATE TABLE public.payment (
-    transaction_id integer NOT NULL,
+    transaction_id character varying NOT NULL,
+    unique_payer character varying NOT NULL,
     payment_id integer NOT NULL,
     account_id integer NOT NULL,
     amount numeric(5,2) NOT NULL,
     payment_date timestamp without time zone DEFAULT now() NOT NULL,
-    type integer NOT NULL
+    type character varying NOT NULL
 );
 
 
@@ -149,27 +149,8 @@ CREATE TABLE public.event (
 
 -- Payment INSERT
 
-INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(1, 1, 100, '2020-04-20 16:20:00', 1, 1);
-
-INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(2, 1, 200, '2020-04-20 16:20:00', 2, 1);
-
-INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(3, 1, 300, '2020-04-20 16:20:00', 3, 1);
-
-INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(4, 1, 400, '2020-04-20 16:20:00', 4, 1);
-
-INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(5, 1, 50, '2020-04-20 16:20:00', 2, 1);
-
-INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(6, 1, 25, '2020-04-20 16:20:00', 2, 1);
-
-INSERT INTO public.payment(transaction_id, account_id, amount, payment_date, payment_id, type)
-VALUES(7, 1, 75, '2020-04-20 16:20:00', 3, 1);
-
+INSERT INTO public.payment(transaction_id, unique_payer, payment_id, account_id, amount, payment_date, type)
+VALUES('PAYID-XXXXXXXXXXXXXXXXXXXXXXXX', 'XXXXXXXXXXXXX', 0, 1, 100, '2020-04-20 16:20:00', 'paypal');
 
 
 -- User INSERT
