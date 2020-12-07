@@ -29,7 +29,7 @@ A local version of our database can be recreated with CharityHub.sql
 
 Project milestones can be found within /MILESTONES/
 
-TESTING 
+# Testing
 
 -To run/test code on a local machine, run "node app.js" and go to localhost:8080. Make sure to have npm install.
 
